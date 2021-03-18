@@ -152,7 +152,7 @@ Public Class Covering_Letter
         Next
         
 
-        'Dim f As New Repcoringletter
+        'Dim f As New Repcoringletter as String
 
 
         QueryList.Add("insert into granite_headercoveringletter(entrydate,vessel_name,covering_no,shipper_name)" & _
