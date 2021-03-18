@@ -18,6 +18,19 @@
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" >
+        var myVar = setInterval(sessioncheck, 5000);
+        function sessioncheck() {
+            var user = $("#asplbluser").text();
+            if (user === undefined) {
+                window.location = "login.aspx";
+            }
+            if (user == "") {
+                window.location = "login.aspx";
+            }
+
+        }
+</script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -35,7 +48,9 @@
 							<a href="#"  style="color:#6d6d6d ;font-size:20px;"><b>Diamond CNF Granite</b> <span></span> </a>							
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span><label  id="lbluser"  /><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> 
+                             <span><asp:Label ID="asplbluser"  runat="server" ></asp:Label><label  id="dpt"  /></span> 
+                            <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">								
 								<li><a href="../login.aspx"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>

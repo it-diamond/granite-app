@@ -4,7 +4,7 @@ Public Class Vessel
     Inherits System.Web.UI.Page
     Dim obj As New ObjClass
     Dim vessel_no, voyage_no, berth_date, net_tonnage, voyage_details, rotation_date, vessel_name, arrival_date, saildate, captain_name, rotation_no, sql,
-        message, CheckSql, vesselid, crane_wt_bup1, crane_wt_bup2, crane_wt_bup3, ownhandling As String
+        message, CheckSql, vesselid, crane_wt_bup1, crane_wt_bup2, crane_wt_bup3, gross_tonnage, ownhandling As String
 
    
 
@@ -30,12 +30,13 @@ Public Class Vessel
         crane_wt_bup2 = Me.cranew2.Text
         crane_wt_bup3 = Me.cranew3.Text
         ownhandling = Me.ownhandle.Text
+        gross_tonnage = Me.grosston.Text
         message = ""
        
         Select Case Me.Save.Text
             Case Is = "Submit"
                 sql = "insert into granite_vessel_master(vessel_no,vessel_name,voyage_no,arrival_date,berth_date,saildate,crane_wt_bup1,crane_wt_bup2,crane_wt_bup3,ownhandling,net_tonnage,captain_name,voyage_details,rotation_no,rotation_date,job_completion_flag) values('" + vessel_no + "','" + vessel_name + "'," & _
-                            "'" + voyage_no + "','" + arrival_date + "','" + berth_date + "','" + saildate + "','" + crane_wt_bup1 + "','" + crane_wt_bup2 + "','" + crane_wt_bup3 + "','" + ownhandling + "','" + net_tonnage + "'," & _
+                            "'" + voyage_no + "','" + arrival_date + "','" + berth_date + "','" + saildate + "','" + crane_wt_bup1 + "','" + crane_wt_bup2 + "','" + crane_wt_bup3 + "','" + ownhandling + "','" + net_tonnage + "','" + gross_tonnage + "'," & _
                             "'" + captain_name + "','" + voyage_details + "','" + rotation_no + "','" + rotation_date + "','0')"
                 successid = obj.QueryExecution(sql)
                 If (successid) Then
@@ -48,7 +49,7 @@ Public Class Vessel
 
                 vesselid = Me.hdid.Value
                 sql = "update granite_vessel_master set vessel_no='" + vessel_no + "' ,vessel_name='" + vessel_name + "',voyage_no ='" + voyage_no + "' ,arrival_date='" + arrival_date +
-                    "', berth_date ='" + berth_date + "',saildate ='" + saildate + "', crane_wt_bup1 ='" + crane_wt_bup1 + "',crane_wt_bup2 ='" + crane_wt_bup2 + "',crane_wt_bup3='" + crane_wt_bup3 + "', ownhandling ='" + ownhandling + "' , net_tonnage='" + net_tonnage + "',captain_name  ='" + captain_name +
+                    "', berth_date ='" + berth_date + "',saildate ='" + saildate + "', crane_wt_bup1 ='" + crane_wt_bup1 + "',crane_wt_bup2 ='" + crane_wt_bup2 + "',crane_wt_bup3='" + crane_wt_bup3 + "', ownhandling ='" + ownhandling + "' , net_tonnage='" + net_tonnage + "',gross_tonnage='" + gross_tonnage + "',captain_name  ='" + captain_name +
                     "' ,voyage_details ='" + voyage_details + "' , rotation_no='" + rotation_no + "',rotation_date='" + rotation_date + "' where auto_id=" & vesselid
                 successid = obj.QueryExecution(sql)
                 If (successid) Then

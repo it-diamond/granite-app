@@ -15,6 +15,7 @@
         Select Case obj.FindDuplicate(Sql)
             Case Is > 0
                 s.SetSessiondata(Username)
+                Session("username") = Username
                 Me.Invalidlogin.Text = ""
                 Response.Redirect("DashBoard/Dashboard.aspx")
             Case Else
