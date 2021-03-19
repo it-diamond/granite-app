@@ -322,13 +322,13 @@ color: #0097FF;
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li class="hidden"><a href="../DashBoard.aspx" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                        <li class="hidden"><a href="../DashBoard.aspx" class="active"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
 						<li ><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="fas fa-database"></i> <span>Essentials</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse in">
 								<ul class="nav">
                                     <li><a  href="../Essentials/Vessel.aspx">Vessel</a></li>
 									<li><a  href="../Essentials/Shipper.aspx">Shipper</a></li>
-									<li><a class="active" href="../Essentials/Consignee.aspx" >Consignee</a></li>									
+									<li><a href="../Essentials/Consignee.aspx" >Consignee</a></li>									
                                     <li><a href="../Essentials/Liner.aspx">Liner</a></li>
                                     <li><a href="../Essentials/Port.aspx" >Port</a></li>
 									<li><a href="../Essentials/Cf.aspx" >C & F Party</a></li>                                    									

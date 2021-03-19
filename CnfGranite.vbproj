@@ -133,6 +133,7 @@
     <Content Include="Images\add.png" />
     <Content Include="CnfGranite.Publish.xml" />
     <Content Include="DashBoard\Dashboard.aspx" />
+    <Content Include="Images\dnvlogo.jpg" />
     <Content Include="Images\edit.png" />
     <Content Include="Essentials\Cf.aspx" />
     <Content Include="Essentials\Consignee.aspx" />
@@ -141,6 +142,11 @@
     <Content Include="Essentials\Shipper.aspx" />
     <Content Include="Essentials\Vessel.aspx" />
     <Content Include="Images\Excelicon.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\next_mon.gif" />
+    <Content Include="Images\next_year.gif" />
+    <Content Include="Images\prev_mon.gif" />
+    <Content Include="Images\prev_year.gif" />
     <Content Include="Lassets\assets\images\background\img5.html" />
     <Content Include="Lassets\images\avatar-1.jpg" />
     <Content Include="Lassets\images\avatar-2.jpg" />

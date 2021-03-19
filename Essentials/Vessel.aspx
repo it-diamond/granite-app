@@ -181,7 +181,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li class="hidden"><a href="../DashBoard.aspx" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+						<li class="hidden"><a href="../DashBoard/DashBoard.aspx" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 						<li ><a href="#subPages" data-toggle="collapse" class="active"><i class="fas fa-database"></i> <span>Essentials</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse in">
 								<ul class="nav">
@@ -238,7 +238,7 @@
                         </div>
                         <div class="row">
                         <div class="col-md-2">Voyage No</div><div class="col-md-4"><asp:TextBox ID="voyno" class="form-control" autocomplete="off" runat="server"></asp:TextBox></div>
-                        <div class="col-md-2">Arrival Date</div><div class="col-md-4"><asp:TextBox ID="arrdt" class="form-control tcal" ReadOnly="true" runat="server"></asp:TextBox></div>
+                        <div class="col-md-2">Arrival Date</div><div class="col-md-4"><asp:TextBox ID="arrdt" class="tcal" runat="server"></asp:TextBox></div>
                         </div>
                         <div class="row">
                         <div class="col-md-2">Berth Date</div><div class="col-md-4"><asp:TextBox ID="brtdt" class="tcal"  autocomplete="off"   runat="server"></asp:TextBox></div>
@@ -266,7 +266,8 @@
                         <div class="col-md-2">Rotation No</div><div class="col-md-4"><asp:TextBox ID="rotno" class="form-control" runat="server"></asp:TextBox></div>
                         <div class="col-md-2">Rotation Date</div>
                         <div class="col-md-4">
-                        <asp:TextBox ID="rotdt"  autocomplete="off"  runat="server" class="form-control tcal" ReadOnly="true"></asp:TextBox></div>
+                        <%-- <asp:TextBox ID="TextBox2"  autocomplete="off"  runat="server" class="form-control tcal" ReadOnly="true">--%>
+                        <asp:TextBox ID="rotdt"  autocomplete="off"  runat="server" class="tcal"></asp:TextBox></div>
                         <div class="col-md-2"></div><div class="col-md-4"></div>
                         </div>
                         <div class="row">

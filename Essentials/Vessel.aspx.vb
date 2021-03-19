@@ -32,10 +32,11 @@ Public Class Vessel
         ownhandling = Me.ownhandle.Text
         gross_tonnage = Me.grosston.Text
         message = ""
+        ''lblDate.Text = Convert.ToDateTime(strDate).ToString("dd/mm/yyyy")
        
         Select Case Me.Save.Text
             Case Is = "Submit"
-                sql = "insert into granite_vessel_master(vessel_no,vessel_name,voyage_no,arrival_date,berth_date,saildate,crane_wt_bup1,crane_wt_bup2,crane_wt_bup3,ownhandling,net_tonnage,captain_name,voyage_details,rotation_no,rotation_date,job_completion_flag) values('" + vessel_no + "','" + vessel_name + "'," & _
+                sql = "insert into granite_vessel_master(vessel_no,vessel_name,voyage_no,arrival_date,berth_date,saildate,crane_wt_bup1,crane_wt_bup2,crane_wt_bup3,ownhandling,net_tonnage,gross_tonnage,captain_name,voyage_details,rotation_no,rotation_date,job_completion_flag) values('" + vessel_no + "','" + vessel_name + "'," & _
                             "'" + voyage_no + "','" + arrival_date + "','" + berth_date + "','" + saildate + "','" + crane_wt_bup1 + "','" + crane_wt_bup2 + "','" + crane_wt_bup3 + "','" + ownhandling + "','" + net_tonnage + "','" + gross_tonnage + "'," & _
                             "'" + captain_name + "','" + voyage_details + "','" + rotation_no + "','" + rotation_date + "','0')"
                 successid = obj.QueryExecution(sql)

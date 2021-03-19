@@ -16,13 +16,14 @@ Public Class ShippingBill
         Using conn As New SqlConnection()
             conn.ConnectionString = ConfigurationManager.ConnectionStrings("MyDbConn").ConnectionString
             Using cmd As New SqlCommand()
-                cmd.CommandText = "SELECT vessel_name FROM granite_vessel_master where vessel_name LIKE '%'+@pre+'%'"
+                'cmd.CommandText = "SELECT vessel_name FROM granite_vessel_master where vessel_name LIKE '%'+@pre+'%'"
+                cmd.CommandText = "SELECT packing_vesselname FROM granite_packinglistheader where packing_vesselname LIKE '%'+@pre+'%' and job_completion_flag=0"
                 cmd.Parameters.AddWithValue("@pre", prefix)
                 cmd.Connection = conn
                 conn.Open()
                 Using sdr As SqlDataReader = cmd.ExecuteReader()
                     While sdr.Read()
-                        Liner.Add(String.Format("{0}-{1}", sdr("vessel_name"), ""))
+                        Liner.Add(String.Format("{0}-{1}", sdr("packing_vesselname"), ""))
                     End While
                 End Using
                 conn.Close()
@@ -140,7 +141,6 @@ Public Class ShippingBill
             Using cmd As New SqlCommand()
                 'cmd.CommandText = "select b.Refno,count(a.blocknumber)as blocknumber,sum(convert(float,a.volumeofCBT))as volumeofCBT,sum(convert(float,a.weightMT))as weightMT,b.packing_listno,b.packing_description,b.packing_shippername, b.packing_consigneename, b.packing_marks from granite_packinglistdetails a,granite_packinglistheader b where a.Refno =b.Refno and packing_vesselname='" & vessname.Text & "' and packing_portname='" & portname.Text & "'  and b.packing_list_type='V' Group by b.Refno,b.packing_listno,b.packing_description,b.packing_shippername,b.packing_consigneename,b.packing_marks"
                 cmd.CommandText = "select b.Refno,count(a.blocknumber)as blocknumber,sum(convert(float,a.volumeofCBT))as volumeofCBT,sum(convert(float,a.weightMT))as weightMT,b.packing_listno,b.packing_description,b.packing_shippername, b.packing_consigneename, b.packing_marks from granite_packinglistdetails a,granite_packinglistheader b where a.Refno =b.Refno and packing_vesselname='" & vessname.Text & "' and packing_portname='" & portname.Text & "' Group by b.Refno,b.packing_listno,b.packing_description,b.packing_shippername,b.packing_consigneename,b.packing_marks"
-
                 cmd.Connection = con
                 Dim dt As New DataTable()
                 Using sda As New SqlDataAdapter(cmd)

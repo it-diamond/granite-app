@@ -43,13 +43,14 @@ Public Class PackingListContainer
         Using conn As New SqlConnection()
             conn.ConnectionString = ConfigurationManager.ConnectionStrings("MyDbConn").ConnectionString
             Using cmd As New SqlCommand()
-                cmd.CommandText = "SELECT packing_vesselname FROM granite_packinglistheader where packing_vesselname LIKE '%'+@pre+'%'"
+                'cmd.CommandText = "SELECT packing_vesselname FROM granite_packinglistheader where packing_vesselname LIKE '%'+@pre+'%' and job_completion_flag=0 and packing_list_type='C'"
+                cmd.CommandText = "SELECT vessel_name FROM granite_vessel_master where vessel_name LIKE '%'+@pre+'%' and job_completion_flag=0 "
                 cmd.Parameters.AddWithValue("@pre", prefix)
                 cmd.Connection = conn
                 conn.Open()
                 Using sdr As SqlDataReader = cmd.ExecuteReader()
                     While sdr.Read()
-                        Liner.Add(String.Format("{0}-{1}", sdr("packing_vesselname"), ""))
+                        Liner.Add(String.Format("{0}-{1}", sdr("vessel_name"), ""))
                     End While
                 End Using
                 conn.Close()
