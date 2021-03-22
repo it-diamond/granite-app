@@ -150,3 +150,11 @@ C:\Users\CFSDSAHP\Desktop\granite18032021\obj\Debug\CnfGranite.vbproj.GenerateRe
 C:\Users\CFSDSAHP\Desktop\granite18032021\obj\Debug\CnfGranite.dll
 C:\Users\CFSDSAHP\Desktop\granite18032021\obj\Debug\CnfGranite.xml
 C:\Users\CFSDSAHP\Desktop\granite18032021\obj\Debug\CnfGranite.pdb
+D:\granite18032021\bin\CnfGranite.dll
+D:\granite18032021\bin\CnfGranite.pdb
+D:\granite18032021\bin\CnfGranite.xml
+D:\granite18032021\obj\Debug\CnfGranite.Resources.resources
+D:\granite18032021\obj\Debug\CnfGranite.vbproj.GenerateResource.Cache
+D:\granite18032021\obj\Debug\CnfGranite.dll
+D:\granite18032021\obj\Debug\CnfGranite.xml
+D:\granite18032021\obj\Debug\CnfGranite.pdb

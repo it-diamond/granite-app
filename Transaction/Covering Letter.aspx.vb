@@ -129,7 +129,7 @@ Public Class Covering_Letter
         'Else
         '    obj.QueryExecution("delete from covering_letter where Refno='" + Refno + "' and entrydate='" + entrydate + "'")
         'End If
-        
+
         Refno = obj.GetOneValueFromQuery("select Refno from granite_packinglistheader where packing_vesselname='" & vessel.Text & "'")
         covering_no = obj.GetOneValueFromQuery("select granite_covering_no from control_mast")
         Dim vessel_name = Me.vessel.Text
@@ -165,7 +165,13 @@ Public Class Covering_Letter
         'QueryList.Add("update granite_packinglistheader set job_completion_flag=1 where packing_vesselname='" + vessel_name + "' ")
 
         'QueryList.Add("update granite_vessel_master set job_completion_flag=1 where vessel_name='" + vessel_name + "' ")
-       
+
+
+        'Dim obj As New Repcoringletter
+        'obj.stringpass = TextBox5.Text
+        ' ''obj.Show()
+        'Response.Redirect("Repcoveringletter.aspx? information=" + TextBox5.Text)
+
 
 
         Select Case obj.TransactionInsert(QueryList)
@@ -252,6 +258,7 @@ Public Class Covering_Letter
         Dim successid As Integer
         Dim QueryList As New List(Of String)
         Dim sno1 = Me.snotxt.Text
+        'Dim sno1 = Val(Me.snotxt.Text) + 1
         Dim entrydate As String = obj.ConvDtFrmt(Now, "yyyy-MM-dd")
         Dim vessel_name = Me.vessel.Text
         Dim shipper_name = Me.shname.Text
@@ -275,8 +282,6 @@ Public Class Covering_Letter
             sql = "insert into granitecoveringletter_shippingdetails(sno1,entrydate,vessel_name,shipper_name,Refno,sib_no,marks,covering_no,sb_date)" & _
              " values('" + sno1 + "','" + entrydate + "','" + vessel_name + "','" + shipper_name + "','" + Refno + "','" + sib_no + "','" + marks + "','" + covering_no + "','" + sb_date + "')"
             successid = obj.QueryExecution(sql)
-            sno1 = sno1 + 1
-
 
             If (successid) Then
                 message = "Record Inserted Successfully"

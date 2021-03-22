@@ -44,7 +44,7 @@ Public Class PackingListContainer
             conn.ConnectionString = ConfigurationManager.ConnectionStrings("MyDbConn").ConnectionString
             Using cmd As New SqlCommand()
                 'cmd.CommandText = "SELECT packing_vesselname FROM granite_packinglistheader where packing_vesselname LIKE '%'+@pre+'%' and job_completion_flag=0 and packing_list_type='C'"
-                cmd.CommandText = "SELECT vessel_name FROM granite_vessel_master where vessel_name LIKE '%'+@pre+'%' and job_completion_flag=0 "
+                cmd.CommandText = "SELECT vessel_name FROM granite_vessel_master where vessel_name LIKE '%'+@pre+'%' and job_completion_flag=0"
                 cmd.Parameters.AddWithValue("@pre", prefix)
                 cmd.Connection = conn
                 conn.Open()
@@ -143,7 +143,7 @@ Public Class PackingListContainer
         'Gridview1.DataSource = Nothing
         'Gridview1.DataBind()
         Dim value = obj.GetOneValueFromQuery("select count(*) from granite_packinglistheader where packing_vesselname='" & vname.Text & "' and job_completion_flag=0")
-
+        'Dim value = obj.GetOneValueFromQuery("SELECT count(*) FROM granite_vessel_master where vessel_name='" & vname.Text & "' and job_completion_flag=0")
         If (value.ToString = 0) Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Cannot create job number')", True)
         Else

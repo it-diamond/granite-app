@@ -2,6 +2,7 @@
     Inherits System.Web.UI.Page
     Dim obj As New ObjClass
     Private _p1 As String
+    Public Property stringpass As String
 
     Sub New(ByVal p1 As String)
         ' TODO: Complete member initialization 
@@ -66,8 +67,6 @@
                 html.Append("</tr>")
             Next
         html.Append("</table>")
-        'Dim f2 As New Covering_Letter
-        'Me.content1.Text = f2.TextBox5.Text
 
 
         'dt = obj.getdatatable("select sb_no,sb_date from granite_packinglistheader where covering_no='" + covering_no + "'")
@@ -135,27 +134,9 @@
            .Text = html.ToString() _
          })
 
+        'content1.Text = Request.QueryString(0)
+
+
     End Sub
-    ''Public Sub New(ByVal value As String)
-
-    ''    ' This call is required by the designer.
-    ''    InitializeComponent()
-
-    ''    content1.Text = value
-
-    ''End Sub
-    'Public Property MyProperty() As String
-    '    Get
-    '        Return content1.Text
-    '    End Get
-    '    Set(ByVal value As String)
-    '        content1.Text = value
-    '    End Set
-    'End Property
-
-    'Sub Show()
-    '    Throw New NotImplementedException
-    'End Sub
-
     
 End Class

@@ -763,6 +763,7 @@
       <DependentUpon>ShippingBill.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Transaction\this.vb" />
     <Compile Include="Voucher\Supplementary.aspx.designer.vb">
       <DependentUpon>Supplementary.aspx</DependentUpon>
     </Compile>
@@ -870,7 +871,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61997</DevelopmentServerPort>
+          <DevelopmentServerPort>41826</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -396,7 +396,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li class="hidden"><a href="../DashBoard.aspx" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+						<li class="hidden"><a href="../DashBoard/DashBoard.aspx"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 						<li ><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="fas fa-database"></i> <span>Essentials</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse">
 								<ul class="nav">
@@ -417,19 +417,19 @@
                                     <li><a href="../Transaction/JobNoDetails.aspx" class="active">JobNo details</a></li>
 									<li><a href="../Transaction/ShippingBill.aspx">SB Details</a></li>
                                     <li><a href="../Transaction/Covering Letter.aspx">Covering Letter </a></li>
-                                    <li><a href="../Transaction/Allocation.aspx">Allocate Job</a></li>
-                                    <li><a href="../Transaction/Search.aspx">Search </a></li>                                    
+                                    <%--<li><a href="../Transaction/Allocation.aspx">Allocate Job</a></li>
+                                    <li><a href="../Transaction/Search.aspx">Search </a></li>   --%>                                 
 								</ul>
 							</div>
 						</li>
-                        <li>
+                        <%--<li>
 							<a href="#subPages2" data-toggle="collapse" class="collapsed"><i class=" fa fa-file"></i> <span>Voucher</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages2" class="collapse">
 								<ul class="nav">
 			                        <li><a href="../Voucher/Supplementary.aspx">Supplementary</a></li>            
 								</ul>
 							</div>
-						</li>
+						</li>--%>
                         <li><a href="../Reports/ReportTree.aspx"><i class="fas fa-chart-pie"></i> <span>Reports</span></a></li>                        
 					</ul>
 				</nav>
@@ -628,11 +628,11 @@
                         </div><div class="col-md-6"><asp:Button ID="Button1" runat="server" class="btn btn-danger" Text="Clear" /></div>                     
                         </div>
 
-                        <div class="row">            
+                       <%-- <div class="row">            
                         <div class="col-md-4 text-right"><asp:Button ID="delete" runat="server" class="btn btn-success" Text="Delete" /></div>
                         <div class="col-md-5"><asp:TextBox ID="detevess" class="form-control " runat="server"></asp:TextBox></div> 
                         </div>    
-                        <br /> 
+                        <br /> --%>
                         <div class="row">
                    <asp:Gridview ID="Gridview1" runat="server" AutoGenerateColumns="false" Width="95%" class="table-bordered ">
 

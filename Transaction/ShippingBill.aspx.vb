@@ -54,13 +54,13 @@ Public Class ShippingBill
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            ' BindGridView()
+            'BindGridView()
         End If
     End Sub
     Sub BindGridView()
 
-        'Dim sql As String = "select a.Refno,a.blocknumber,a.volumeofCBT,a.weightMT,b.packing_listno,b.packing_description,b.packing_shippername,b.packing_consigneename,b.packing_marks  from granite_packinglistdetails a,granite_packinglistheader b where a.Refno =b.Refno  and b.packing_list_type='V'"
-        Dim sql As String = "select a.Refno,a.blocknumber,a.volumeofCBT,a.weightMT,b.packing_listno,b.packing_description,b.packing_shippername,b.packing_consigneename,b.packing_marks  from granite_packinglistdetails a,granite_packinglistheader b where a.Refno =b.Refno  "
+        Dim sql As String = "select a.Refno,a.blocknumber,a.volumeofCBT,a.weightMT,b.packing_listno,b.packing_description,b.packing_shippername,b.packing_consigneename,b.packing_marks  from granite_packinglistdetails a,granite_packinglistheader b where a.Refno =b.Refno  and b.packing_list_type='V'"
+        'Dim sql As String = "select a.Refno,a.blocknumber,a.volumeofCBT,a.weightMT,b.packing_listno,b.packing_description,b.packing_shippername,b.packing_consigneename,b.packing_marks  from granite_packinglistdetails a,granite_packinglistheader b where a.Refno =b.Refno  "
         Dim ds As New DataSet()
         ds = obj.getdataset(Sql)
         gvDetails.DataSource = ds

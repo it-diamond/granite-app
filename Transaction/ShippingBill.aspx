@@ -167,7 +167,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li class="hidden"><a href="../DashBoard.aspx" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+						<li class="hidden"><a href="../DashBoard/DashBoard.aspx"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
 						<li ><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="fas fa-database"></i> <span>Essentials</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse">
 								<ul class="nav">
@@ -188,19 +188,19 @@
                                     <li><a href="../Transaction/JobNoDetails.aspx">JobNo Details</a></li>
 									<li><a class="active" href="../Transaction/ShippingBill.aspx">SB Details</a></li>
                                     <li><a href="../Transaction/Covering Letter.aspx">Covering Letter</a></li>
-                                    <li><a href="../Transaction/Allocation.aspx">Allocate Job</a></li>
-                                    <li><a href="../Transaction/Search.aspx">Search </a></li>                                    
+                                    <%--<li><a href="../Transaction/Allocation.aspx">Allocate Job</a></li>
+                                    <li><a href="../Transaction/Search.aspx">Search </a></li>    --%>                                
 								</ul>
 							</div>
 						</li>
-                        <li>
+                        <%--<li>
 							<a href="#subPages2" data-toggle="collapse" class="collapsed"><i class=" fa fa-file"></i> <span>Voucher</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages2" class="collapse">
 								<ul class="nav">
 			                        <li><a href="../Voucher/Supplementary.aspx">Supplementary</a></li>            
 								</ul>
 							</div>
-						</li>
+						</li>--%>
                         <li><a href="../Reports/ReportTree.aspx"><i class="fas fa-chart-pie"></i> <span>Reports</span></a></li>                        
 					</ul>
 				</nav>
@@ -230,7 +230,12 @@
                   <asp:GridView ID="gvDetails" runat="server" AutoGenerateColumns ="False"        
                    EmptyDataText="No Data Found" >       
                    <headerstyle backcolor="#df5015" />
-       <columns >
+       <columns>
+      <asp:templatefield headertext="Refno" headerstyle-backcolor="#00bfff">
+<itemtemplate>
+<asp:label id="gvlblrefno" text='<%# eval("Refno") %>' runat="server"/>
+</itemtemplate>
+</asp:templatefield>
     <asp:templatefield headertext="packing no" headerstyle-backcolor="#00bfff">
 <itemtemplate>
 <asp:label id="gvlblpno" text='<%# eval("packing_listno") %>' runat="server"/>
