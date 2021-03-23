@@ -861,6 +861,7 @@
     </None>
     <None Include="obj\Debug\CnfGranite.vbproj.GenerateResource.Cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="SQLBackup\granite.bak" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
@@ -871,7 +872,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>41826</DevelopmentServerPort>
+          <DevelopmentServerPort>2511</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

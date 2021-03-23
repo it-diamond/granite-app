@@ -410,7 +410,7 @@ color: #0097FF;
 				<nav>
 					<ul class="nav">
 						<li class="hidden"><a href="../DashBoard/DashBoard.aspx"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-						<li ><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="fas fa-database"></i> <span>Essentials</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+						<li ><a href="#subPages" data-toggle="collapse"><i class="fas fa-database"></i><span>Essentials</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse in">
 								<ul class="nav">
                                     <li><a  href="../Essentials/Vessel.aspx">Vessel</a></li>
@@ -427,23 +427,24 @@ color: #0097FF;
 							<div id="subPages3" class="collapse ">
 								<ul class="nav">
 									<li><a href="../Transaction/PackingListVessel.aspx" >Packing List Vessel </a></li>
-                                    <li><a href="../Transaction/JobNoDetails.aspx">Job No Details</a></li>
-                                     <li><a href="../Transaction/Covering Letter.aspx">Covering Letter</a></li>
+                                    <li><a href="../Transaction/JobNoDetails.aspx">JobNo Details </a></li>
 									<li><a href="../Transaction/ShippingBill.aspx">SB Details</a></li>
+                                    <li><a href="../Transaction/Covering Letter.aspx" >Covering Letter</a></li>
                                     <%--<li><a href="../Transaction/Allocation.aspx">Allocate Job</a></li>
-                                    <li><a href="../Transaction/Search.aspx" >Search </a></li>     --%>                               
+                                    <li><a href="../Transaction/Search.aspx" >Search </a></li>         --%>                           
 								</ul>
 							</div>
 						</li>
                         <li>
-							<a href="#subPages2" data-toggle="collapse" class="active"><i class=" fa fa-file"></i> <span>Voucher</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<a href="#subPages2" data-toggle="collapse" class="collapsed"><i class=" fa fa-file"></i> <span>Voucher</span> 
+                            <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages2" class="collapse">
 								<ul class="nav">
 			                        <li><a href="../Voucher/Supplementary.aspx" class="active">Supplementary</a></li>            
 								</ul>
 							</div>
 						</li>
-                        <li><a href="../Reports/ReportTree.aspx"><i class="fas fa-chart-pie"></i> <span>Reports</span></a></li>                        
+                        <li><a href="../Reports/ReportTree.aspx"><i class="fas fa-chart-pie"></i><span>Reports</span></a></li>                        
 					</ul>
 				</nav>
 			</div>
@@ -469,7 +470,7 @@ color: #0097FF;
      <div class="col-sm-3" > <asp:TextBox ID="vno" runat="server" class="form-control  fillvno" AutoComplete="off"></asp:TextBox></div>
     <asp:HiddenField ID="hdvno" runat="server"  ></asp:HiddenField> 
      <div class="col-sm-3" ><asp:Button ID="filldetails"  class="btn btn-primary" runat="server" Text="Fill" /></div>
-     <b style ="font-size:small">VOUCHER NO WILL BE CREATED IN NEW FORMAT LIKE    833/2019-2020  </b> 
+     <b style ="font-size:small">VOUCHER NO WILL BE CREATED IN NEW FORMAT LIKE    833/2021-2022  </b> 
           </div>
   <div class="row pading">
     <div class="col-sm-6" >Employee Name</div>

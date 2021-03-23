@@ -122,6 +122,24 @@ Partial Public Class PackingListContainer
     Protected WithEvents sbno As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''sbnoadd control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sbnoadd As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''ListBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ListBox1 As Global.System.Web.UI.WebControls.ListBox
+
+    '''<summary>
     '''sbdate control.
     '''</summary>
     '''<remarks>
@@ -408,24 +426,6 @@ Partial Public Class PackingListContainer
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''delete control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents delete As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''detevess control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents detevess As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Gridview1 control.

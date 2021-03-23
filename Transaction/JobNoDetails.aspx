@@ -381,7 +381,8 @@
 							<a href="#"  style="color:#6d6d6d ;font-size:20px;"><b>Diamond CNF Granite</b> <span></span> </a>							
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span><label  id="lbluser"  /><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span>
+                            <label  id="lbluser"/><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">								
 								<li><a href="../login.aspx"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
@@ -422,14 +423,14 @@
 								</ul>
 							</div>
 						</li>
-                        <%--<li>
+                        <li>
 							<a href="#subPages2" data-toggle="collapse" class="collapsed"><i class=" fa fa-file"></i> <span>Voucher</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages2" class="collapse">
 								<ul class="nav">
 			                        <li><a href="../Voucher/Supplementary.aspx">Supplementary</a></li>            
 								</ul>
 							</div>
-						</li>--%>
+						</li>
                         <li><a href="../Reports/ReportTree.aspx"><i class="fas fa-chart-pie"></i> <span>Reports</span></a></li>                        
 					</ul>
 				</nav>
@@ -496,10 +497,15 @@
                         </div>
                         <div class="row pading">
                         <div class="col-md-2">SB.No</div>
-                        <div class="col-md-2"><asp:TextBox ID="sbno" class="form-control " autocomplete="off" runat="server"></asp:TextBox> 
-                         </div> 
-                         <div class="col-md-2"><asp:TextBox ID="sbdate" class="tcal" autocomplete="off" runat="server"></asp:TextBox> 
-                        </div>
+                        <div class="col-md-2"><asp:TextBox ID="sbno" class="form-control " autocomplete="off" runat="server"></asp:TextBox></div>
+                        <div class="col-sm-1"> <asp:Button type="button" ID="sbnoadd" runat="server" Text="add" class="btn btn-outline-info"/></div>
+                        <div class="col-md-1"><asp:ListBox ID="ListBox1" runat="server" Height="75" Width="75" SelectionMode="Multiple" AutoPostBack="False"></asp:ListBox></div>
+                        <div class="col-md-1"><asp:TextBox ID="sbdate" class="tcal" autocomplete="off" runat="server"></asp:TextBox> 
+                         
+                        
+                        </div> 
+                          
+                         
                         </div>
                         <div class="row pading">
                         <div class="col-md-2">Shipper Name</div>
@@ -661,7 +667,7 @@
         </Columns>
 
 </asp:Gridview> 
-                    
+ </div>                   
 </div>
 </div>    
    </div>

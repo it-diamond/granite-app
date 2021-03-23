@@ -138,6 +138,7 @@ Public Class PackingListContainer
         Me.noofblocks.Text = ""
         Me.cbm1.Text = ""
         Me.totalweight1.Text = ""
+        Me.ListBox1.Items.Clear()
         'Me.confrno.Text = Me.lblrefno.Text
 
         'Gridview1.DataSource = Nothing
@@ -179,7 +180,7 @@ Public Class PackingListContainer
 
                 Dim strcon As String = ConfigurationManager.ConnectionStrings("MydbConn").ConnectionString
                 Dim sql As String
-                sql = "select  sno_blist,sb_no,sb_date,sh_code,port_code,packing_marks,packing_description,s_billtype,invoice_no,invoice_date,bl_number,bl_date," & _
+                sql = "select sno_blist,sb_no,sb_date,packing_shippername,packing_portname,packing_marks,packing_description,s_billtype,invoice_no,invoice_date,bl_number,bl_date," & _
                 "stuffing_date, total_blocknumber, total_volumeofCBT, total_weight, bl_confirmationdate, document_ddate, time_taken, reasons_ncs from granite_packinglistheader where Refno='" & refno & "'"
                 Dim getdata As New List(Of String)
                 getdata = obj.GetMoreValueFromQuery(sql, 20)
@@ -318,7 +319,8 @@ Public Class PackingListContainer
         Dim total_blocknumber, total_volumeofCBT, total_weight As Double
         Dim refno As String
         sno_blist = Me.snoblist.Text
-        sb_no = Me.sbno.Text
+        'sb_no = Me.sbno.Text'
+        sb_no = Me.ListBox1.SelectedItem.Text
         sb_date = obj.ConvDtFrmt(Me.sbdate.Text, "yyyy-MM-dd")
         packing_shippername = Me.shname.Text
         packing_portname = Me.portname.Text
@@ -581,6 +583,13 @@ Public Class PackingListContainer
         Me.lbledit.Text = "EDITING SHIPPING BILL NO:"
         Me.lblrefno.Text = ""
         Me.lblvenam.Text = Me.vname.Text
+
+    End Sub
+
+    Private Sub sbnoadd_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles sbnoadd.Click
+        ListBox1.Items.Add(sbno.Text.Trim())
+        sbno.Text = ""
+        sbno.Focus()
 
     End Sub
 End Class

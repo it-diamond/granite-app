@@ -10,11 +10,9 @@ Public Class Supplementary
             Me.processdt.Text = Format(Now, "dd/MM/yyyy")
             Me.submit.Visible = True
             Me.update.Visible = False
-              
-           
         End If
         Dim scriptKey As String = "UniqueKeyForThisScript"
-        Response.Write("<script>   $('.imp').hide(); $('.exp').hide();$('.eximp').hide(); </script>")
+        Response.Write("<script>$('.imp').hide(); $('.exp').hide();$('.eximp').hide(); </script>")
         Dim javaScript As String = "<script type='text/javascript'>dpmtfn('" + Session("dept") + "');</script>"
         ClientScript.RegisterStartupScript(Me.GetType(), scriptKey, javaScript)
     End Sub
@@ -173,7 +171,7 @@ Public Class Supplementary
         '    Case Else
         'sql = "select RefNo,cuscode from doc_arrival where RefNo like '%'+@prefix+'%'"
 
-        'End Select
+        'End Select 
 
         Using conn As New SqlConnection()
             conn.ConnectionString = ConfigurationManager.ConnectionStrings("MyDbConn").ConnectionString
@@ -479,7 +477,7 @@ Public Class Supplementary
             tot_amt = Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text)
 
             querylist.Add("insert into  supplementary_dtl(voucher_no ,job_no ,charge_desc ,job_amt ," & _
-                          "remarks,tax_amt,grand_amt,round_off,tot_amt  ) values" & _
+                          "remarks,tax_amt,grand_amt,round_off,tot_amt) values" & _
                           "('" + voucher_no + "','" + job_nodtl + "','" + charge_desc + "'," & _
                           "'" + job_amt + "','" + remarksdtl + "','" + tax_amt + "','" + grand_amt + "'," & _
                           "'" + round_off + "','" + tot_amt + "')"
