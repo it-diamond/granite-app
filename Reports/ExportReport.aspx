@@ -18,12 +18,12 @@
     <table style="width:120%;">
     <tr>
     <td colspan="1">
-    <center><font size="3"><b>DIAMOND SHIPPING AGENCIES P.LTD.,-TUTICORN</b></font></center>
+    <center> <font size="3"><b>DIAMOND SHIPPING AGENCIES P.LTD.,-TUTICORN</b></font></center>
     </td>
     </tr>
     <tr>
     <td class="style1">
-    <p align="center" style="width: 806px"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EXPORT GENERAL MANIFEST</b></p>
+    <p align="center" style="width: 806px"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPORT GENERAL MANIFEST</b></p>
     </td>
     <td style ="width :30%">
     <p align="center"> &nbsp;</p>
@@ -41,21 +41,21 @@
     </tr>
     </table>
        <asp:GridView ID="gvDetails" runat="server" AutoGenerateColumns="false"  EmptyDataText="No Data Found"
-AllowSorting="true"  Width ="100%" CssClass="GridviewDiv" ShowFooter="true" ItemStyle-HorizontalAlign="Right"  >
+AllowSorting="true"  Width ="75%" CssClass="GridviewDiv" ShowFooter="true" ItemStyle-HorizontalAlign="Right"  >
 <HeaderStyle />
 <Columns>
-<asp:TemplateField HeaderText="S.BILL NO & Date" ItemStyle-HorizontalAlign="Right">
+<asp:TemplateField HeaderText="S.BILL NO & Date" ItemStyle-HorizontalAlign="Center">
 <ItemTemplate>
 
 <asp:Label ID="lblshipno" Text='<%# Eval("sb_no") + "\ " + Eval("sb_date")%>' runat="server"></asp:Label>
 </ItemTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText="MARKS" ItemStyle-HorizontalAlign="Right">
+<asp:TemplateField HeaderText="MARKS" ItemStyle-HorizontalAlign="Center">
 <ItemTemplate>
 <asp:Label ID="lblmark" Text='<%# Eval("packing_marks") %>' runat="server"/>
 </ItemTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText="NO OF BLOCKS" ItemStyle-HorizontalAlign="Right">
+<asp:TemplateField HeaderText="NO OF BLOCKS" ItemStyle-HorizontalAlign="Center">
 <ItemTemplate>
 <asp:Label ID="lblblocks" Text='<%# Eval("blocknumber").ToString %>' runat="server"/>
 </ItemTemplate>
@@ -63,22 +63,22 @@ AllowSorting="true"  Width ="100%" CssClass="GridviewDiv" ShowFooter="true" Item
      <asp:Label ID="lblTotal" runat="server"></asp:Label>
      </FooterTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText="DESCRIPTION OF GOODS"  ItemStyle-HorizontalAlign="Right">
+<asp:TemplateField HeaderText="DESCRIPTION OF GOODS" ItemStyle-HorizontalAlign="Center">
 <ItemTemplate>
 <asp:Label ID="lblgoods" Text='<%# Eval("packing_description") %>' runat="server"/>
 </ItemTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText="BY WHOM SHIPPED " ItemStyle-HorizontalAlign="Right">
+<asp:TemplateField HeaderText="BY WHOM SHIPPED" ItemStyle-HorizontalAlign="Center">
 <ItemTemplate>
 <asp:Label ID="lblshippername" Text='<%# Eval("packing_shippername") %>' runat="server"/>
 </ItemTemplate>
 </asp:TemplateField> 
-<asp:TemplateField HeaderText="TO WHOM CONSIGNED" ItemStyle-HorizontalAlign="Right">
+<asp:TemplateField HeaderText="TO WHOM CONSIGNED" ItemStyle-HorizontalAlign="Center">
 <ItemTemplate>
 <asp:Label ID="lblConsignee" Text='<%# Eval("packing_consigneename") %>' runat="server"/>
 </ItemTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText="CBM" ItemStyle-HorizontalAlign="Right">
+<asp:TemplateField HeaderText="CBM" ItemStyle-HorizontalAlign="Center">
 <ItemTemplate>
 <%--<ItemTemplate>  
      <asp:Label ID="lblAmount" runat="server"   
@@ -91,7 +91,7 @@ AllowSorting="true"  Width ="100%" CssClass="GridviewDiv" ShowFooter="true" Item
      <asp:Label ID="lblTotal1" runat="server"></asp:Label>
      </FooterTemplate>
 </asp:TemplateField>
- <asp:TemplateField HeaderText="GR.WEIGHT IN M.TONES." ItemStyle-HorizontalAlign="Right" >
+ <asp:TemplateField HeaderText="GR.WEIGHT IN M.TONES." ItemStyle-HorizontalAlign="Center">
 <ItemTemplate>
 <asp:Label ID="crossweight" Text='<%# Eval("WeightMT").ToString %>' runat="server"/>
 </ItemTemplate>

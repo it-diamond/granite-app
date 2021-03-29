@@ -34,10 +34,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".autocalc").keyup(function () {
-                var voucheramt, taxamt, grandamt, roundoff, total;
+                var voucheramt, taxamt, grandamt, roundoff, total, noofcontainer;
                 voucheramt = $("#voucheramt").val();
                 taxamt = $("#taxamt").val();
-                grandamt = (+voucheramt) + (+taxamt);
+                noofcontainer = $("#noofcontainer").val();
+//                'grandamt = (+voucheramt) + (+taxamt);
+                grandamt = (+voucheramt) * (+noofcontainer) + (+taxamt);
                 total = Math.round(grandamt)
                 var getrnd = Math.round(grandamt, 2)
                 roundoff = (+grandamt) - (+getrnd);
@@ -60,9 +62,16 @@
         $("#totamt").hide();
         $("#round").hide();
         var selectedvalue = $('#<%= vouchertype.ClientID %> input:checked').val()
-        if (selectedvalue == "general") { gendiv(); }
-        else if (selectedvalue == "partywise") { partydiv(); }
-        else { jobdiv(); }
+        if (selectedvalue == "general") {
+            gendiv();
+          }
+        else if (selectedvalue == "partywise") 
+        {
+            partydiv();
+         }
+        else 
+        { jobdiv(); 
+        }
 
     });
     function gendiv() {
@@ -394,7 +403,8 @@ color: #0097FF;
 							<a href="#"  style="color:#6d6d6d ;font-size:20px;"><b>Diamond CNF Granite</b> <span></span> </a>							
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span><label  id="lbluser"  /><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span>
+                            <asp:Label ID="asplbluser" runat="server"></asp:Label><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">								
 								<li><a href="../login.aspx"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
@@ -474,10 +484,14 @@ color: #0097FF;
           </div>
   <div class="row pading">
     <div class="col-sm-6" >Employee Name</div>
-    <div class="col-sm-6" > <asp:TextBox ID="empname" runat="server" class="form-control  fillemp" AutoComplete="off"></asp:TextBox> 
+    <div class="col-sm-6" ><asp:TextBox ID="empname" runat="server" class="form-control  fillemp" AutoComplete="off"></asp:TextBox> 
          <asp:HiddenField ID="hdid" runat="server"  ></asp:HiddenField>  <asp:HiddenField ID="hfbtn" runat="server"   ></asp:HiddenField> </div> 
     </div>
-       
+    <div class="row pading">
+    <div class="col-sm-6" >Job No</div>
+     <div class="col-sm-3" > <asp:TextBox ID="jobno1" runat="server" class="form-control  filljob" AutoComplete="off"></asp:TextBox></div>
+     <div class="col-sm-3" ><asp:Button ID="getcontainer"  class="btn btn-primary" runat="server" Text="Get Container" /></div>
+     </div>
            <div class="row pading">
             <div class="col-sm-6">Process Date</div>
       
@@ -507,6 +521,7 @@ color: #0097FF;
                  <div class="col-sm-3 divjob"><asp:TextBox ID="jobno" runat="server" class="form-control  filljob" AutoComplete="off" placeholder="Job No"></asp:TextBox><label id="lblcusname"  ></label></div> 
                <div class="col-sm-3 divcus"><asp:TextBox ID="cusname" runat="server" class="form-control  fillship" AutoComplete="off" placeholder="Cus Name"></asp:TextBox></div>
        <div class="col-sm-3 common"><asp:TextBox ID="voucheramt" runat="server" class="form-control autocalc" AutoComplete="off" placeholder="Voucher Amount"></asp:TextBox></div> 
+       <div class="col-sm-3 common"><asp:TextBox ID="noofcontainer" runat="server" class="form-control" AutoComplete="off" placeholder="No Of Container"></asp:TextBox></div> 
          <div class="col-sm-3 common"><asp:TextBox ID="remarks" runat="server" class="form-control fillremarks" AutoComplete="off" placeholder="Remarks"></asp:TextBox></div> 
           
           <div class="col-sm-3 common"><asp:TextBox ID="taxamt" runat="server" class="form-control autocalc" AutoComplete="off" placeholder="Tax"></asp:TextBox></div> 
@@ -532,6 +547,7 @@ color: #0097FF;
         <asp:BoundField DataField="name" HeaderText="No/Name" ItemStyle-Width="30" />
         <asp:BoundField DataField="voucheramt" HeaderText="Voucher Amount" ItemStyle-Width="150" />
         <asp:BoundField DataField="chargedesc" HeaderText="Charge Description" ItemStyle-Width="150" />
+        <asp:BoundField DataField="noofcontainer" HeaderText="Noof Container" ItemStyle-Width="150" />
          <asp:BoundField DataField="remarks" HeaderText="Remarks" ItemStyle-Width="150" />
 
           <asp:BoundField DataField="taxamt" HeaderText="Tax" ItemStyle-Width="150" />

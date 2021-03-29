@@ -30,6 +30,11 @@
         display:none;
         
     }
+    .form-control {
+            border: 1px solid #e5e5e5;
+            padding: 4px;
+            border-color: black;
+        } 
     </style>
     <%-- <script type="text/javascript">
         function validation() 
@@ -202,14 +207,14 @@
                         </asp:TextBox><asp:HiddenField
                                 ID="hdid" runat="server" />
                         </div>
-                        <div class="col-md-2">Marks</div><div class="col-md-4"><asp:TextBox ID="conmarks" class="form-control " autocomplete="off" runat="server"></asp:TextBox></div>
+                        <div class="col-md-2">Marks</div><div class="col-md-4"><asp:TextBox ID="conmarks" class="form-control" autocomplete="off" runat="server"></asp:TextBox></div>
                         </div>
                         <div class="row">
-                        <div class="col-md-2">Address 1</div><div class="col-md-4"><asp:TextBox ID="conaddr1" class="form-control "  autocomplete="off" runat="server"></asp:TextBox></div>
+                        <div class="col-md-2">Address 1</div><div class="col-md-4"><asp:TextBox ID="conaddr1" class="form-control " autocomplete="off" runat="server"></asp:TextBox></div>
                         <div class="col-md-2">Address 2</div><div class="col-md-4"><asp:TextBox ID="conaddr2" class="form-control " autocomplete="off"  runat="server"></asp:TextBox></div>
                         </div>
                         <div class="row">
-                        <div class="col-md-2">City</div><div class="col-md-4"><asp:TextBox ID="concity" class="form-control " autocomplete="false"   runat="server"></asp:TextBox></div>
+                        <div class="col-md-2">City</div><div class="col-md-4"><asp:TextBox ID="concity" class="form-control " autocomplete="false"  runat="server"></asp:TextBox></div>
                         <div class="col-md-2">Country</div><div class="col-md-4"><asp:TextBox ID="concountry" class="form-control " autocomplete="off"  runat="server"></asp:TextBox></div>
                         </div>
                         <div class="row">
@@ -217,8 +222,11 @@
                         <div class="col-md-2">Phone No</div><div class="col-md-4"><asp:TextBox ID="conphoneno" class="form-control " runat="server"></asp:TextBox></div>
                         </div>
                         <div class="row">
-                        <div class="col-md-2">Contact Person</div><div class="col-md-4"><asp:TextBox ID="concperson" class="form-control " runat="server"></asp:TextBox></div>
+                        <div class="col-md-2">Contact Person</div><div class="col-md-4"><asp:TextBox ID="concperson" class="form-control" runat="server"></asp:TextBox></div>
                         <div class="col-md-2">Email Id</div><div class="col-md-4"><asp:TextBox ID="conemailid" class="form-control " runat="server"></asp:TextBox></div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-2">USCI No</div><div class="col-md-4"><asp:TextBox ID="uscino" class="form-control " runat="server"></asp:TextBox></div>
                         </div>
                         <div class="row">
                         <div class="col-md-6 text-right"><asp:Button ID="save" runat="server" Text="Submit" class="btn btn-success" OnClientClick="return validation()" /></div><div class="col-md-6"><asp:Button ID="Button1" runat="server" class="btn btn-danger" Text="Clear" /></div>                       
@@ -240,7 +248,7 @@
 <asp:Label ID="conname1" Text='<%# Eval("consignee_name") %>' runat="server"/>
 </ItemTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText="Conmarks" HeaderStyle-BackColor="#00bfff" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
+<%--<asp:TemplateField HeaderText="Conmarks" HeaderStyle-BackColor="#00bfff" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
 <ItemTemplate>
 <asp:Label ID="conmarks1" Text='<%# Eval("consignee_marks") %>' runat="server" />
 </ItemTemplate>
@@ -284,7 +292,7 @@
 <ItemTemplate>
 <asp:Label ID="conemailid1" Text='<%# Eval("consignee_emailid ") %>' runat="server"/>
 </ItemTemplate>
-</asp:TemplateField>
+</asp:TemplateField>--%>
 <asp:TemplateField HeaderText="Edit" HeaderStyle-BackColor="#00bfff">
 <ItemTemplate>
        <asp:ImageButton ID="imgEdit" runat="server" CommandName="Edit"  ImageUrl="~/assets/img/edit.png"  ToolTip="Edit" commandargument='<%#Eval("auto_id")%>' CausesValidation="false"/>

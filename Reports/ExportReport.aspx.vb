@@ -28,7 +28,8 @@ Public Class ExportReport
         gvDetails.DataBind()
 
         gvDetails.FooterRow.Cells(0).Text = "Total"
-        gvDetails.FooterRow.Cells(0).HorizontalAlign = HorizontalAlign.Right
+        gvDetails.FooterRow.Cells(0).HorizontalAlign = HorizontalAlign.Center
+
 
         'Dim total As Double = 0
         'For i As Integer = 0 To gvDetails.Rows.Count - 1
@@ -39,9 +40,9 @@ Public Class ExportReport
         'gvDetails.FooterRow.Cells(6).Text = total.ToString
         'gvDetails.FooterRow.Cells(6).Text = Math.Round(total, 0).ToString()
         'gvDetails.FooterRow.Cells(7).Text = Math.Round(total, 0).ToString()
-        gvDetails.FooterRow.Cells(2).HorizontalAlign = HorizontalAlign.Right
-        gvDetails.FooterRow.Cells(6).HorizontalAlign = HorizontalAlign.Right
-        gvDetails.FooterRow.Cells(7).HorizontalAlign = HorizontalAlign.Right
+        gvDetails.FooterRow.Cells(2).HorizontalAlign = HorizontalAlign.Center
+        gvDetails.FooterRow.Cells(6).HorizontalAlign = HorizontalAlign.Center
+        gvDetails.FooterRow.Cells(7).HorizontalAlign = HorizontalAlign.Center
         ' ''gvDetails.Rows.Add(Nothing, Nothing, "Total",total)
         'Me.Noofblocks1.Text = obj.GetOneValueFromQuery("select count(a.blocknumber)from granite_packinglistdetails a," & _
         '                     "granite_packinglistheader b where a.Refno =b.Refno " & _

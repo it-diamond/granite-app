@@ -32,6 +32,15 @@ Partial Public Class Supplementary
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''asplbluser control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents asplbluser As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''vno control.
     '''</summary>
     '''<remarks>
@@ -86,6 +95,24 @@ Partial Public Class Supplementary
     Protected WithEvents hfbtn As Global.System.Web.UI.WebControls.HiddenField
 
     '''<summary>
+    '''jobno1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents jobno1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''getcontainer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents getcontainer As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''processdt control.
     '''</summary>
     '''<remarks>
@@ -138,6 +165,15 @@ Partial Public Class Supplementary
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents voucheramt As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''noofcontainer control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents noofcontainer As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''remarks control.

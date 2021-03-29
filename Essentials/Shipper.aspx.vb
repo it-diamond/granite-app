@@ -4,11 +4,15 @@ Public Class Shipper
     Inherits System.Web.UI.Page
     Dim obj As New ObjClass
     Dim shipper_name, shipper_address, shipper_address2, shipper_city, shipper_state, shipper_pincode, shipper_contactperson, shipper_email,
-        shipper_phoneno, shipper_mobileno, shipper_iecode, sql, message, CheckSql, shipper_id As String
+        shipper_phoneno, shipper_mobileno, shipper_iecode, sql, message, CheckSql, shipper_id, shipper_gstno As String
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        asplbluser.Text = Session("username")
+        If Not Page.IsPostBack Then
+            state1.Items.Add("Tamilnadu")
+            state1.Items.Add("Kerala")
+        End If
     End Sub
 
     Protected Sub save_Click(sender As Object, e As EventArgs) Handles save.Click
@@ -17,21 +21,23 @@ Public Class Shipper
         shipper_address = Me.addr1.Text
         shipper_address2 = Me.addr2.Text
         shipper_city = Me.city.Text
-        shipper_state = Me.state.Text
+        shipper_state = Me.state1.Text
         shipper_pincode = Me.pincode.Text
         shipper_contactperson = Me.contact.Text
         shipper_email = Me.email.Text
         shipper_phoneno = Me.phone.Text
         shipper_mobileno = Me.mobile.Text
         shipper_iecode = Me.iecode.Text
+        shipper_gstno = Me.gstno.Text
+
         message = ""
 
         Select Me.save.Text
             Case Is = "Submit"
-                sql = "insert into granite_shipper_master(shipper_name, shipper_address, shipper_address2 , shipper_city, shipper_state, shipper_pincode," & _
-                            "shipper_contactperson,shipper_email, shipper_phoneno,shipper_mobileno,shipper_iecode)values('" + shipper_name + "','" + shipper_address + "'," & _
+                sql = "insert into granite_shipper_master(shipper_name, shipper_address, shipper_address2,shipper_city, shipper_state, shipper_pincode," & _
+                            "shipper_contactperson,shipper_email, shipper_phoneno,shipper_mobileno,shipper_iecode,shipper_gstno )values('" + shipper_name + "','" + shipper_address + "'," & _
                             "'" + shipper_address2 + "','" + shipper_city + "','" + shipper_state + "','" + shipper_pincode + "','" + shipper_contactperson + "'," & _
-                            "'" + shipper_email + "','" + shipper_phoneno + "','" + shipper_mobileno + "','" + shipper_iecode + "')"
+                            "'" + shipper_email + "','" + shipper_phoneno + "','" + shipper_mobileno + "','" + shipper_iecode + "','" + shipper_gstno + "')"
                 successid = obj.QueryExecution(Sql)
                 If (successid) Then
                     message = "Record Inserted Successfully"
@@ -44,7 +50,7 @@ Public Class Shipper
                 shipper_id = Me.hdid.Value
                 sql = "update granite_shipper_master set shipper_name ='" + shipper_name + "' ,shipper_address='" + shipper_address + "',shipper_address2='" + shipper_address2 + "' ,shipper_city='" + shipper_city +
                     "',shipper_state ='" + shipper_state + "', shipper_pincode ='" + shipper_pincode + "' , shipper_contactperson='" + shipper_contactperson + "',shipper_email  ='" + shipper_email +
-                    "' ,shipper_phoneno ='" + shipper_phoneno + "' ,shipper_mobileno='" + shipper_mobileno + "', shipper_iecode='" + shipper_iecode + "' where auto_id=" & shipper_id
+                    "' ,shipper_phoneno ='" + shipper_phoneno + "' ,shipper_mobileno='" + shipper_mobileno + "',shipper_iecode='" + shipper_iecode + "',shipper_gstno='" + shipper_gstno + "' where auto_id=" & shipper_id
                 successid = obj.QueryExecution(sql)
                 If (successid) Then
                     message = "Record Updated Successfully"
@@ -64,7 +70,7 @@ Public Class Shipper
         script += url
         script += "'; }"
         ClientScript.RegisterStartupScript(Me.GetType(), "Redirect", script, True)
-        shipperdsi.SelectCommand = "Select auto_id, shipper_name, shipper_address,shipper_address2, shipper_city, shipper_state, shipper_pincode,shipper_contactperson,shipper_email,shipper_phoneno,shipper_mobileno,shipper_iecode from granite_shipper_master"
+        shipperdsi.SelectCommand = "Select auto_id, shipper_name, shipper_address,shipper_address2, shipper_city, shipper_state, shipper_pincode,shipper_contactperson,shipper_email,shipper_phoneno,shipper_mobileno,shipper_iecode,shipper_gstno from granite_shipper_master"
 
     End Sub
 
@@ -78,7 +84,7 @@ Public Class Shipper
                 Dim strcon As String = ConfigurationManager.ConnectionStrings("MydbConn").ConnectionString
                 Dim sql As String
 
-                sql = "Select shipper_name, shipper_address,shipper_address2,shipper_city,shipper_state,shipper_pincode,shipper_contactperson,shipper_email,shipper_phoneno,shipper_mobileno,shipper_iecode from granite_shipper_master where auto_id='" + shipper_id + "'"
+                sql = "Select shipper_name, shipper_address,shipper_address2,shipper_city,shipper_state,shipper_pincode,shipper_contactperson,shipper_email,shipper_phoneno,shipper_mobileno,shipper_iecode,shipper_gstno from granite_shipper_master where auto_id='" + shipper_id + "'"
                 Dim getdata As New List(Of String)
                 getdata = obj.GetMoreValueFromQuery(sql, 11)
 
@@ -86,7 +92,7 @@ Public Class Shipper
                 Me.addr1.Text = getdata.Item(1)
                 Me.addr2.Text = getdata.Item(2)
                 Me.city.Text = getdata.Item(3)
-                Me.state.Text = getdata.Item(4)
+                Me.state1.Text = getdata.Item(4)
                 Me.pincode.Text = getdata.Item(5)
                 Me.contact.Text = getdata.Item(6)
                 Me.email.Text = getdata.Item(7)
@@ -109,7 +115,7 @@ Public Class Shipper
         addr1.Text = ""
         addr2.Text = ""
         city.Text = ""
-        state.Text = ""
+        state1.Text = ""
         pincode.Text = ""
         contact.Text = ""
         email.Text = ""

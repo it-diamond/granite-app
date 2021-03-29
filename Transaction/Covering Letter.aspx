@@ -307,6 +307,7 @@ color: #0097FF;
             <div class="col-sm-3 left">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" >
         <Columns>
+        <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />
         <asp:TemplateField HeaderText="ShippingBillNo" ItemStyle-Width="30">
             <ItemTemplate>
                 <asp:TextBox ID="txtsb_no" runat="server" Text='<%# Eval("sb_no") %>'/>
@@ -324,17 +325,17 @@ color: #0097FF;
         </asp:TemplateField>
         <asp:TemplateField>
             <ItemTemplate>
-                <asp:Button ID="Button3" Text="Insert" runat="server" CommandName="Insert" CommandArgument="<%# Container.DataItemIndex %>" />
+                <asp:Button ID="Button3" Text="Insert" runat="server" CommandName="Insert"  CommandArgument="<%# Container.DataItemIndex %>" />
             </ItemTemplate>
+            <FooterStyle HorizontalAlign="Right" />
+            <FooterTemplate>
+             <asp:Button ID="ButtonAdd" runat="server" Text="Add New Row" />
+            </FooterTemplate>
         </asp:TemplateField>
       </Columns>
-</asp:GridView>
-             </br>
+</asp:GridView>         
             </div> 
-            </div>                                                                                                                                                                                                                                                                                                           
-       
-           </br>
-            
+            </div>                                                                                                                                                                                                                                                                                                            
              <div class="col-sm-2" > 
             <asp:RadioButtonList ID="couriertype" runat="server" RepeatDirection="Horizontal" CssClass="radioboxlist">
             <asp:ListItem Value="professional" Selected="True" onclick="repcusname()">Professional</asp:ListItem>

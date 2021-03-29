@@ -8,7 +8,12 @@ Public Class Covering_Letter
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        'If Not IsPostBack Then
+        '    Me.SetInitialRow()
+        'End If
     End Sub
+
+
     <WebMethod()>
     Public Shared Function Getvessel(ByVal prefix As String) As String()
         Dim Liner As New List(Of String)()
@@ -241,7 +246,8 @@ Public Class Covering_Letter
 
         Dim constr As String = ConfigurationManager.ConnectionStrings("MydbConn").ConnectionString
         Using con As New SqlConnection(constr)
-            Using cmd As New SqlCommand("select sb_no,packing_marks,sb_date from granite_packinglistheader where Refno='" & sbilno.Text & "'")
+            Using cmd As New SqlCommand("select sb_no,packing_marks,Convert(varchar(10),CONVERT(date,sb_date ,106),120) as sb_date from granite_packinglistheader where Refno='" & sbilno.Text & "'")
+                'Using cmd As New SqlCommand("select sb_no,packing_marks,sb_date from granite_packinglistheader where Refno='" & sbilno.Text & "'")
                 cmd.Connection = con
                 Using sda As New SqlDataAdapter(cmd)
                     Dim dt As New DataTable()
@@ -293,4 +299,71 @@ Public Class Covering_Letter
 
         End If
     End Sub
+
+    'Private Sub SetInitialRow()
+    '    Dim dt As New DataTable()
+    '    Dim dr As DataRow = Nothing
+    '    dt.Columns.Add(New DataColumn("RowNumber", GetType(String)))
+    '    dt.Columns.Add(New DataColumn("Column1", GetType(String)))
+    '    dt.Columns.Add(New DataColumn("Column2", GetType(String)))
+    '    dt.Columns.Add(New DataColumn("Column3", GetType(String)))
+    '    dt.Columns.Add(New DataColumn("Column4", GetType(String)))
+
+    '    dr = dt.NewRow()
+    '    dr("RowNumber") = 1
+    '    dr("Column1") = String.Empty
+    '    dr("Column2") = String.Empty
+    '    dr("Column3") = String.Empty
+    '    dr("Column4") = String.Empty
+
+    '    dt.Rows.Add(dr)
+    '    ViewState("CurrentTable" & 0) = dt
+    '    ViewState("CurrentTable" & 1) = dt
+    '    ViewState("CurrentTable" & 2) = dt
+    '    ViewState("CurrentTable" & 3) = dt
+    '    ViewState("CurrentTable" & 4) = dt
+    '    'BindGridview()
+    '    GridView1.DataSource = dt
+    '    GridView1.DataBind()
+    'End Sub
+    'Private Sub AddNewRowToGrid(ByVal viewId As Integer, ByVal gv As GridView)
+    '    Dim rowIndex As Integer = 0
+    '    If ViewState("CurrentTable" & viewId) IsNot Nothing Then
+    '        Dim dtCurrentTable As DataTable = DirectCast(ViewState("CurrentTable" & viewId), DataTable)
+    '        Dim drCurrentRow As DataRow = Nothing
+    '        If dtCurrentTable.Rows.Count > 0 Then
+    '            For i As Integer = 1 To dtCurrentTable.Rows.Count
+    '                Dim box1 As New TextBox()
+    '                Dim box2 As New Button()
+    '                If viewId = 0 Then
+    '                    box1 = DirectCast(gv.Rows(rowIndex).Cells(0).FindControl("txtsb_no"), TextBox)
+    '                    box1 = DirectCast(gv.Rows(rowIndex).Cells(1).FindControl("txtpacking_marks"), TextBox)
+    '                    box1 = DirectCast(gv.Rows(rowIndex).Cells(2).FindControl("txtsb_date"), TextBox)
+    '                    box2 = DirectCast(gv.Rows(rowIndex).Cells(4).FindControl("Button3"), Button)
+    '                End If
+    '                'If viewId = 1 Then
+    '                '    box1 = DirectCast(gv.Rows(rowIndex).Cells(1).FindControl("txtspouseincome1"), TextBox)
+    '                'End If
+
+    '                drCurrentRow = dtCurrentTable.NewRow()
+    '                drCurrentRow("RowNumber") = i + 1
+    '                dtCurrentTable.Rows(i - 1)("Column1") = box1.Text
+    '                dtCurrentTable.Rows(i - 1)("Column2") = box1.Text
+    '                dtCurrentTable.Rows(i - 1)("Column3") = box1.Text
+    '                dtCurrentTable.Rows(i - 1)("Column4") = box2.Text
+    '                rowIndex += 1
+    '            Next
+
+    '            dtCurrentTable.Rows.Add(drCurrentRow)
+    '            ViewState("CurrentTable" & viewId) = dtCurrentTable
+    '            gv.DataSource = dtCurrentTable
+    '            gv.DataBind()
+    '        End If
+    '    Else
+
+    '        Response.Write("ViewState is null")
+    '    End If
+
+    '    SetPreviousData(viewId, gv)
+    'End Sub
 End Class

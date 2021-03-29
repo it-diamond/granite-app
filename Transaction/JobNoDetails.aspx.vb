@@ -14,7 +14,7 @@ Public Class PackingListContainer
             ' BindGridView()
             'myDiv.Visible = False
         End If
-
+        asplbluser.Text = Session("username")
 
     End Sub
    <WebMethod()>
@@ -319,8 +319,8 @@ Public Class PackingListContainer
         Dim total_blocknumber, total_volumeofCBT, total_weight As Double
         Dim refno As String
         sno_blist = Me.snoblist.Text
-        'sb_no = Me.sbno.Text'
-        sb_no = Me.ListBox1.SelectedItem.Text
+        sb_no = Me.sbno.Text
+        'sb_no = Me.ListBox1.SelectedItem.Text
         sb_date = obj.ConvDtFrmt(Me.sbdate.Text, "yyyy-MM-dd")
         packing_shippername = Me.shname.Text
         packing_portname = Me.portname.Text

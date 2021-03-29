@@ -32,6 +32,15 @@ Partial Public Class Shipper
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''asplbluser control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents asplbluser As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''shipper control.
     '''</summary>
     '''<remarks>
@@ -77,13 +86,13 @@ Partial Public Class Shipper
     Protected WithEvents city As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''state control.
+    '''state1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents state As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents state1 As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''pincode control.
@@ -138,6 +147,15 @@ Partial Public Class Shipper
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents iecode As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''gstno control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gstno As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''save control.

@@ -5,7 +5,7 @@ Public Class Supplementary
     Inherits System.Web.UI.Page
     Dim obj As New ObjClass
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        asplbluser.Text = Session("username")
         If Not Page.IsPostBack Then
             Me.processdt.Text = Format(Now, "dd/MM/yyyy")
             Me.submit.Visible = True
@@ -25,6 +25,7 @@ Public Class Supplementary
         table.Columns.AddRange(New DataColumn() {New DataColumn("name", GetType(String)), _
                                               New DataColumn("voucheramt", GetType(String)), _
                                               New DataColumn("chargedesc", GetType(String)), _
+                                             New DataColumn("noofcontainer", GetType(String)), _
                                               New DataColumn("remarks", GetType(String)), _
                                               New DataColumn("taxamt", GetType(String)), _
                                               New DataColumn("grandamt", GetType(String)), _
@@ -40,14 +41,15 @@ Public Class Supplementary
                            Server.HtmlDecode(Gridview1.Rows(i).Cells(4).Text),
                            Server.HtmlDecode(Gridview1.Rows(i).Cells(5).Text),
                            Server.HtmlDecode(Gridview1.Rows(i).Cells(6).Text),
-                           Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text))
+                           Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text),
+                        Server.HtmlDecode(Gridview1.Rows(i).Cells(8).Text))
         Next
         If Me.vouchertype.SelectedValue = "general" Then
-            table.Rows.Add("", Me.voucheramt.Text, Me.chargedesc.Text, Me.remarks.Text, "0", Me.voucheramt.Text, "0", Me.voucheramt.Text)
-
+            'table.Rows.Add("", Me.voucheramt.Text, Me.chargedesc.Text, Me.noofcontainer.Text, Me.remarks.Text, "0", Me.voucheramt.Text, "0", Me.voucheramt.Text)
+            table.Rows.Add("", Me.voucheramt.Text, Me.chargedesc.Text, Me.noofcontainer.Text, Me.remarks.Text, "0", Me.noofcontainer.Text * Me.voucheramt.Text, "0", Me.noofcontainer.Text * Me.voucheramt.Text)
 
         ElseIf Me.vouchertype.SelectedValue = "partywise" Then
-            table.Rows.Add(Me.cusname.Text, Me.voucheramt.Text, Me.chargedesc.Text, Me.remarks.Text, "0", Me.voucheramt.Text, "0", Me.voucheramt.Text)
+            table.Rows.Add(Me.cusname.Text, Me.voucheramt.Text, Me.chargedesc.Text, Me.noofcontainer.Text, Me.remarks.Text, "0", Me.voucheramt.Text, "0", Me.voucheramt.Text)
             Me.cusname.Text = ""
             Me.cusname.Visible = True
 
@@ -60,7 +62,7 @@ Public Class Supplementary
                     Exit Sub
                 End If
             End If
-            table.Rows.Add(Me.jobno.Text, Me.voucheramt.Text, Me.chargedesc.Text, Me.remarks.Text,
+            table.Rows.Add(Me.jobno.Text, Me.voucheramt.Text, Me.chargedesc.Text, Me.noofcontainer.Text, Me.remarks.Text,
                            obj.ISValidNumber(Me.taxamt.Text), obj.ISValidNumber(Me.grandamt.Text),
                           Math.Round(obj.ISValidNumber(Me.totamt.Text) - obj.ISValidNumber(Me.grandamt.Text), 2), obj.ISValidNumber(Me.totamt.Text))
             Me.jobno.Text = ""
@@ -75,6 +77,7 @@ Public Class Supplementary
         Me.grandamt.Text = ""
         Me.round.Text = ""
         Me.totamt.Text = ""
+        Me.noofcontainer.Text = ""
         Gridview1.DataSource = table
         Gridview1.DataBind()
     End Sub
@@ -161,6 +164,7 @@ Public Class Supplementary
         End Using
         Return Employee.ToArray()
     End Function
+   
     <WebMethod()>
     Public Shared Function GetJobNo(ByVal prefix As String) As String()
         Dim Employee As New List(Of String)()
@@ -170,9 +174,7 @@ Public Class Supplementary
         sql = "select Refno,packing_shippername from granite_packinglistheader where Refno like '%'+@prefix+'%'"
         '    Case Else
         'sql = "select RefNo,cuscode from doc_arrival where RefNo like '%'+@prefix+'%'"
-
         'End Select 
-
         Using conn As New SqlConnection()
             conn.ConnectionString = ConfigurationManager.ConnectionStrings("MyDbConn").ConnectionString
             Using cmd As New SqlCommand()
@@ -191,6 +193,7 @@ Public Class Supplementary
         Return Employee.ToArray()
     End Function
 
+    
 
     <WebMethod()>
     Public Shared Function GetRemarks(ByVal prefix As String) As String()
@@ -254,16 +257,14 @@ Public Class Supplementary
                     whattype = obj.GetOneValueFromQuery("select what_type from voucher_tbl where voucher_no='" + Me.vno.Text + "'")
 
                 End If
-
-
-
                 Me.chargedesc.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(2).Text)
                 Me.voucheramt.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(1).Text)
-                Me.remarks.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(3).Text)
-                Me.taxamt.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(4).Text)
-                Me.grandamt.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(5).Text)
-                Me.round.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(6).Text)
-                Me.totamt.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(7).Text)
+                Me.noofcontainer.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(3).Text)
+                Me.remarks.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(4).Text)
+                Me.taxamt.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(5).Text)
+                Me.grandamt.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(6).Text)
+                Me.round.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(7).Text)
+                Me.totamt.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(8).Text)
                 'Dim sqlgrid As String
                 If whattype = "general" Then
                     Me.taxamt.Visible = False
@@ -289,12 +290,13 @@ Public Class Supplementary
                 table.Columns.AddRange(New DataColumn() {New DataColumn("name", GetType(String)), _
                                                       New DataColumn("voucheramt", GetType(String)), _
                                                       New DataColumn("chargedesc", GetType(String)), _
+                                                      New DataColumn("noofcontainer", GetType(Integer)), _
                                                       New DataColumn("remarks", GetType(String)), _
                                               New DataColumn("taxamt", GetType(String)), _
                                               New DataColumn("grandamt", GetType(String)), _
                                               New DataColumn("round", GetType(String)), _
                                               New DataColumn("totamt", GetType(String))})
-
+                'noofcontainer'
                 ' Add five rows with those columns filled in the DataTable.
                 For i = 0 To Gridview1.Rows.Count - 1
                     table.Rows.Add(Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text),
@@ -304,7 +306,8 @@ Public Class Supplementary
                                    Server.HtmlDecode(Gridview1.Rows(i).Cells(4).Text),
                                    Server.HtmlDecode(Gridview1.Rows(i).Cells(5).Text),
                                    Server.HtmlDecode(Gridview1.Rows(i).Cells(6).Text),
-                                   Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text))
+                                   Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text),
+                                   Server.HtmlDecode(Gridview1.Rows(i).Cells(8).Text))
                 Next
                 table.Rows.RemoveAt(rowIndex)
 
@@ -349,6 +352,7 @@ Public Class Supplementary
                 table.Columns.AddRange(New DataColumn() {New DataColumn("name", GetType(String)), _
                                                       New DataColumn("voucheramt", GetType(String)), _
                                                       New DataColumn("chargedesc", GetType(String)), _
+                                                    New DataColumn("noofcontainer", GetType(Integer)), _
                                                       New DataColumn("remarks", GetType(String)), _
                                               New DataColumn("taxamt", GetType(String)), _
                                               New DataColumn("grandamt", GetType(String)), _
@@ -364,15 +368,14 @@ Public Class Supplementary
                                    Server.HtmlDecode(Gridview1.Rows(i).Cells(4).Text),
                                    Server.HtmlDecode(Gridview1.Rows(i).Cells(5).Text),
                                    Server.HtmlDecode(Gridview1.Rows(i).Cells(6).Text),
-                                   Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text))
+                                   Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text),
+                                   Server.HtmlDecode(Gridview1.Rows(i).Cells(8).Text))
+
                 Next
                 table.Rows.RemoveAt(rowIndex)
                 Gridview1.DataSource = table
                 Gridview1.DataBind()
         End Select
-
-
-
 
     End Sub
 
@@ -380,26 +383,36 @@ Public Class Supplementary
         Me.update.Visible = False
         Me.submit.Visible = True
         Dim querylist As New List(Of String)
-        Dim job_nodtl, charge_desc, job_amt, remarksdtl, voucher_no As String
+        Dim job_nodtl, charge_desc, remarksdtl, voucher_no As String
         Dim totjobamt As Double = 0
+        'Dim totjobamt As Integer = 0
         voucher_no = obj.GetOneValueFromQuery("select convert(nvarchar,voucher_no)+voucher_format from control_mast")
-        Dim tax_amt, grand_amt, round_off, tot_amt As String
+        'Dim tax_amt, grand_amt, round_off, tot_amt As String
+        Dim tax_amt, grand_amt, round_off, tot_amt, job_amt As Integer
+        Dim noof_container As Integer
         For i = 0 To Gridview1.Rows.Count - 1
             job_nodtl = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
             charge_desc = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
             job_amt = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
-            remarksdtl = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
-            tax_amt = Server.HtmlDecode(Gridview1.Rows(i).Cells(4).Text)
-            grand_amt = Server.HtmlDecode(Gridview1.Rows(i).Cells(5).Text)
-            round_off = Server.HtmlDecode(Gridview1.Rows(i).Cells(6).Text)
-            tot_amt = Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text)
+            remarksdtl = Server.HtmlDecode(Gridview1.Rows(i).Cells(4).Text)
+            tax_amt = Server.HtmlDecode(Gridview1.Rows(i).Cells(5).Text)
+            grand_amt = ((Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)) * (Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)))
+            round_off = Server.HtmlDecode(Gridview1.Rows(i).Cells(7).Text)
+            tot_amt = Server.HtmlDecode(Gridview1.Rows(i).Cells(8).Text)
+            noof_container = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
 
-            querylist.Add("insert into  supplementary_dtl(voucher_no ,job_no ,charge_desc ,job_amt ," & _
-                          "remarks,tax_amt,grand_amt,round_off,tot_amt  ) values" & _
-                          "('" + voucher_no + "','" + job_nodtl + "','" + charge_desc + "'," & _
-                          "'" + job_amt + "','" + remarksdtl + "','" + tax_amt + "','" + grand_amt + "'," & _
-                          "'" + round_off + "','" + tot_amt + "')"
-)
+
+            'querylist.Add("insert into supplementary_dtl(voucher_no,job_no,charge_desc,job_amt ," & _
+            '              "remarks,tax_amt,grand_amt,round_off,tot_amt,noof_container)values" & _
+            '              "('" + voucher_no + "','" + job_nodtl + "','" + charge_desc + "'," & _
+            '              "'" + job_amt + "','" + remarksdtl + "','" + tax_amt + "','" + grand_amt + "'," & _
+            '              "'" + round_off + "','" + tot_amt + "','" + noof_container + "')")
+
+            querylist.Add("insert into supplementary_dtl(job_no,charge_desc,job_amt ," & _
+                          "remarks,voucher_no,tax_amt,grand_amt,round_off,tot_amt,noof_container)values" & _
+                          "('" + job_nodtl + "','" + charge_desc + "'," & _
+                          "'" + job_amt + "','" + remarksdtl + "','" + voucher_no + "','" + tax_amt + "','" + grand_amt + "'," & _
+                          "'" + round_off + "','" + tot_amt + "','" + noof_container + "')")
             totjobamt = totjobamt + CDbl(tot_amt)
         Next
         Dim voucher_date, what_type, emp_name,
@@ -429,9 +442,9 @@ Public Class Supplementary
         bill_type = ""
         cheque_serial_no = ""
         cheque_flg = "0"
-        querylist.Add("insert into voucher_tbl (voucher_no ,voucher_date,what_type ," & _
+        querylist.Add("insert into voucher_tbl(voucher_no ,voucher_date,what_type ," & _
         "voucher_type, cus_name, remarks, voucher_amt, bank_name, payment_type," & _
-        "place_type, department, credit_in_bank, supplier_name, account_name,emp_name,bill_type,cheque_serial_no  ,cheque_flg,approve_flg) values('" + voucher_no + "','" + voucher_date + "'," & _
+        "place_type, department, credit_in_bank, supplier_name, account_name,emp_name,bill_type,cheque_serial_no ,cheque_flg,approve_flg) values('" + voucher_no + "','" + voucher_date + "'," & _
         "'" + what_type + "','" + voucher_type + "','" + cus_name + "','" + remarks + "'," & _
         "'" & voucher_amt & "','" + bank_name + "','" + payment_type + "','" + place_type + "','" + department + "','" + credit_in_bank + "'," & _
         "'" + supplier_name + "','" + account_name + "','" + emp_name + "','" + bill_type + "','" + cheque_serial_no + "','" + cheque_flg + "',0)"
@@ -559,10 +572,10 @@ Public Class Supplementary
         Gridview1.DataBind()
     End Sub
 
+    Private Sub getcontainer_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles getcontainer.Click
 
-   
-    
-
-
-
+        Dim value = obj.GetOneValueFromQuery("select COUNT(*) from granite_container_no where refno='" & jobno1.Text & "'")
+        'value = Me.noofcontainer.Text
+        Me.noofcontainer.Text = value
+    End Sub
 End Class

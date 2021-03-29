@@ -101,3 +101,9 @@
 #tcalGrid td.tcalWeekend { background-color: #ACD6F5; }
 #tcalGrid td.tcalToday { border: 1px solid red; }
 #tcalGrid td.tcalSelected { background-color: #FFB3BE; }		
+
+.form-control {
+            border: 1px solid #e5e5e5;
+            padding: 4px;
+            border-color: black;
+        } 

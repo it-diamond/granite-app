@@ -382,7 +382,7 @@
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span>
-                            <label  id="lbluser"/><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                            <asp:Label ID="asplbluser" runat="server"></asp:Label><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">								
 								<li><a href="../login.aspx"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>

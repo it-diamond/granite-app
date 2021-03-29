@@ -29,7 +29,12 @@
     {
         display:none;
         
-    }    
+    }
+    .form-control {
+            border: 1px solid #e5e5e5;
+            padding: 4px;
+            border-color: black;
+       }     
     
     </style>
     <%--<script type="text/javascript">

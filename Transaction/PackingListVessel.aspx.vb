@@ -7,7 +7,7 @@ Public Class PackingList
     Dim obj As New ObjClass
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        asplbluser.Text = Session("username")
     End Sub
     <WebMethod()>
     Public Shared Function Getcnfparty(prefix As String) As String()

@@ -137,7 +137,7 @@ Public Class Reporttree
         vesselname = Request.Form("vesnamewt")
         portname = Request.Form("portnamewt")
         'Cnfparty = Request.Form("cnfparty")
-        Dim pageurl = "WeightwiseReport.aspx?vesname=" + vesselname + "&portname=" + portname
+        Dim pageurl = "WeightwiseReport.aspx?vesname=" + vesselname+ "&portname=" + portname
         Response.Write("<script> window.open( '" + pageurl + "','_blank' ); </script>")
     End Sub
     
@@ -185,7 +185,7 @@ Public Class Reporttree
 
     Private Sub tim2cancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles tim2cancel.Click
         vesname.Text = ""
-        portname.Text = ""
+        'portname.Text = ""
         'ListBox1.Items.RemoveAt(ListBox1.SelectedIndex())
         ListBox1.Items.Clear()
 
@@ -210,5 +210,9 @@ Public Class Reporttree
     Private Sub Weightwisecancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Weightwisecancel.Click
         vesnamewt.Text = ""
         portnamewt.Text = ""
+    End Sub
+
+    Private Sub Reporttree_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        asplbluser.Text = Session("username")
     End Sub
 End Class

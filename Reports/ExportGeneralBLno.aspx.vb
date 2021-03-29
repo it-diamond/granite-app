@@ -30,7 +30,8 @@ Public Class ExportGeneralBLno
         gvDetails.DataBind()
 
         gvDetails.FooterRow.Cells(0).Text = "Total"
-        gvDetails.FooterRow.Cells(0).HorizontalAlign = HorizontalAlign.Right
+        gvDetails.FooterRow.Cells(0).HorizontalAlign = HorizontalAlign.Center
+
 
         'Dim total As Double = 0
         'For i As Integer = 0 To gvDetails.Rows.Count - 1
@@ -46,11 +47,17 @@ Public Class ExportGeneralBLno
         'gvDetails.FooterRow.Cells(7).Text = Math.Round(total, 0).ToString()
         'gvDetails.FooterRow.Cells(8).Text = Math.Round(total, 0).ToString()
         'gvDetails.FooterRow.Cells(9).Text = Math.Round(total, 0).ToString()
-        gvDetails.FooterRow.Cells(2).HorizontalAlign = HorizontalAlign.Right
-        gvDetails.FooterRow.Cells(6).HorizontalAlign = HorizontalAlign.Right
-        gvDetails.FooterRow.Cells(7).HorizontalAlign = HorizontalAlign.Right
-        gvDetails.FooterRow.Cells(8).HorizontalAlign = HorizontalAlign.Right
-        gvDetails.FooterRow.Cells(9).HorizontalAlign = HorizontalAlign.Right
+        gvDetails.FooterRow.Cells(2).HorizontalAlign = HorizontalAlign.Center
+
+        gvDetails.FooterRow.Cells(6).HorizontalAlign = HorizontalAlign.Center
+
+        gvDetails.FooterRow.Cells(7).HorizontalAlign = HorizontalAlign.Center
+
+
+        gvDetails.FooterRow.Cells(8).HorizontalAlign = HorizontalAlign.Center
+
+        gvDetails.FooterRow.Cells(9).HorizontalAlign = HorizontalAlign.Center
+
 
 
         'Me.Noofblocks.Text = obj.GetOneValueFromQuery("select count(a.blocknumber)from granite_packinglistdetails a," & _

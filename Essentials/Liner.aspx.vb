@@ -8,7 +8,7 @@ Public Class Liner
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        asplbluser.Text = Session("username")
     End Sub
 
     Protected Sub save_Click(sender As Object, e As EventArgs) Handles save.Click

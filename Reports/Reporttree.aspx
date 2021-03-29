@@ -307,7 +307,8 @@ color: #0097FF;
 							<a href="#"  style="color:#6d6d6d ;font-size:20px;"><b>Diamond CNF Granite</b> <span></span> </a>							
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span><label  id="lbluser"  /><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span>
+                            <asp:Label ID="asplbluser" runat="server"></asp:Label><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">								
 								<li><a href="../login.aspx"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
@@ -400,7 +401,7 @@ color: #0097FF;
 <br />
 <br />
                  <div class="col-sm-2">Vessel Name</div> <div class="col-sm-4"><asp:TextBox ID="vname" runat="server" CssClass="clsautovessel" Width="200px" /></div>
-                  <div class="col-sm-2">Port Name</div> <div class="col-sm-4"><asp:TextBox ID="pname" CssClass="clsautoport" runat="server" Width="200px"/></div>
+                 <div class="col-sm-2">Port Name</div> <div class="col-sm-4"><asp:TextBox ID="pname" CssClass="clsautoport" runat="server" Width="200px"/></div>
              <br />
                 <br />
                    <br />
@@ -473,7 +474,7 @@ color: #0097FF;
                   <br />
                   <div class="col-sm-2">Crane Weight1</div> <div class="col-sm-4"><asp:TextBox ID="cranewt1"  CssClass="clsautocnf" runat="server" Width="200px"/></div>
                   <br />
-                  <div class="col-sm-2">Crane Weight3</div> <div class="col-sm-4"><asp:TextBox ID="cranewt3"  CssClass="clsautocnf" runat="server" Width="200px"/></div>
+                <div class="col-sm-2">Crane Weight3</div> <div class="col-sm-4"><asp:TextBox ID="cranewt3"  CssClass="clsautocnf" runat="server" Width="200px"/></div>
                   <br />
                   <div class="col-sm-2">Crane Weight2</div> <div class="col-sm-4"><asp:TextBox ID="cranewt2"  CssClass="clsautocnf" runat="server" Width="200px"/></div>
                   <br />
@@ -490,7 +491,7 @@ color: #0097FF;
                    <br />
                 <br />
                  <div class="col-sm-2">Vessel Name</div> <div class="col-sm-4"><asp:TextBox ID="vesnamewt" CssClass="clsautovessel" runat="server" Width="200px" /></div>
-                  <div class="col-sm-2">Port Name</div> <div class="col-sm-4"><asp:TextBox ID="portnamewt" CssClass="clsautoport" runat="server" Width="200px"/></div>
+                 <div class="col-sm-2">Port Name</div> <div class="col-sm-4"><asp:TextBox ID="portnamewt" CssClass="clsautoport" runat="server" Width="200px"/></div>
                  <br />
                  <br />
               <div class="col-sm-3"> <asp:Button ID="Weightwisereport" runat="server" Text="Report" class="btn btn-primary"/></div>

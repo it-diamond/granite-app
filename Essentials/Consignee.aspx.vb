@@ -4,7 +4,7 @@ Public Class Consignee
     Inherits System.Web.UI.Page
     Dim obj As New ObjClass
     Dim consignee_name, consignee_marks, consignee_address1, consignee_address2,
-        consignee_city, consignee_country, consignee_pincode, consignee_phoneno, consignee_contactperson, consignee_emailid, sql, message, CheckSql, consigneeid As String
+        consignee_city, consignee_country, consignee_pincode, consignee_phoneno, consignee_contactperson, consignee_emailid, sql, message, CheckSql, consignee_uscino, consigneeid As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
@@ -22,15 +22,17 @@ Public Class Consignee
         consignee_phoneno = Me.conphoneno.Text
         consignee_contactperson = Me.concperson.Text
         consignee_emailid = Me.conemailid.Text
+        consignee_uscino = Me.uscino.Text
+
         message = ""
 
 
         Select Case Me.save.Text
             Case Is = "Submit"
                 sql = "insert into granite_consigneedetails_master(consignee_name , consignee_marks, consignee_address1, consignee_address2 , consignee_city, consignee_country," & _
-                            "consignee_pincode ,consignee_phoneno , consignee_contactperson, consignee_emailid) values('" + consignee_name + "','" + consignee_marks + "'," & _
+                            "consignee_pincode ,consignee_phoneno ,consignee_contactperson, consignee_emailid,consignee_uscino) values('" + consignee_name + "','" + consignee_marks + "'," & _
                             "'" + consignee_address1 + "','" + consignee_address2 + "','" + consignee_city + "','" + consignee_country + "','" + consignee_pincode + "'," & _
-                            "'" + consignee_phoneno + "','" + consignee_contactperson + "','" + consignee_emailid + "')"
+                            "'" + consignee_phoneno + "','" + consignee_contactperson + "','" + consignee_emailid + "','" + consignee_uscino + "')"
                 successid = obj.QueryExecution(sql)
                 If (successid) Then
                     message = "Record Inserted Successfully"
@@ -42,7 +44,7 @@ Public Class Consignee
 
                 consigneeid = Me.hdid.Value
                 sql = "update granite_consigneedetails_master set consignee_name  ='" + consignee_name + "' ,consignee_marks='" + consignee_marks + "',consignee_address1 ='" + consignee_address1 + "' ,consignee_address2='" + consignee_address2 +
-                   "',consignee_city='" + consignee_city + "', consignee_country ='" + consignee_country + "' , consignee_pincode='" + consignee_pincode + "',consignee_phoneno   ='" + consignee_phoneno + "' ,consignee_contactperson ='" + consignee_contactperson + "',consignee_emailid ='" + consignee_emailid + "' where auto_id=" & consigneeid
+                   "',consignee_city='" + consignee_city + "', consignee_country ='" + consignee_country + "' , consignee_pincode='" + consignee_pincode + "',consignee_phoneno   ='" + consignee_phoneno + "' ,consignee_contactperson ='" + consignee_contactperson + "',consignee_emailid ='" + consignee_emailid + "',consignee_uscino ='" + consignee_uscino + "' where auto_id=" & consigneeid
                 successid = obj.QueryExecution(sql)
                 If (successid) Then
                     message = "Record Updated Successfully"
@@ -66,7 +68,7 @@ Public Class Consignee
         script += url
         script += "'; }"
         ClientScript.RegisterStartupScript(Me.GetType(), "Redirect", script, True)
-        consigneedsi.SelectCommand = "Select auto_id, consignee_name , consignee_marks, consignee_address1, consignee_address2 , consignee_city, consignee_country,consignee_pincode ,consignee_phoneno , consignee_contactperson, consignee_emailid from granite_consigneedetails_master"
+        consigneedsi.SelectCommand = "Select auto_id, consignee_name , consignee_marks, consignee_address1, consignee_address2 , consignee_city, consignee_country,consignee_pincode ,consignee_phoneno , consignee_contactperson, consignee_emailid,consignee_uscino from granite_consigneedetails_master"
     End Sub
 
     Private Sub gvvessel_RowCommand(sender As Object, e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles gvvessel.RowCommand
@@ -79,9 +81,9 @@ Public Class Consignee
                 Dim strcon As String = ConfigurationManager.ConnectionStrings("MydbConn").ConnectionString
                 Dim sql As String
 
-                sql = "Select consignee_name , consignee_marks, consignee_address1, consignee_address2 , consignee_city, consignee_country,consignee_pincode ,consignee_phoneno , consignee_contactperson, consignee_emailid from granite_consigneedetails_master where auto_id='" + consigneeid + "'"
+                sql = "Select consignee_name , consignee_marks, consignee_address1, consignee_address2 , consignee_city, consignee_country,consignee_pincode ,consignee_phoneno ,consignee_contactperson,consignee_emailid,consignee_uscino from granite_consigneedetails_master where auto_id='" + consigneeid + "'"
                 Dim getdata As New List(Of String)
-                getdata = obj.GetMoreValueFromQuery(sql, 10)
+                getdata = obj.GetMoreValueFromQuery(sql, 11)
 
                 Me.conname.Text = getdata.Item(0)
                 Me.conmarks.Text = getdata.Item(1)
@@ -93,7 +95,7 @@ Public Class Consignee
                 Me.conphoneno.Text = getdata.Item(7)
                 Me.concperson.Text = getdata.Item(8)
                 Me.conemailid.Text = getdata.Item(9)
-
+                Me.uscino.Text = getdata.Item(10)
                 Me.hdid.Value = consigneeid
 
                 Me.save.Text = "Update"
@@ -120,7 +122,7 @@ Public Class Consignee
         conphoneno.Text = ""
         conemailid.Text = ""
         concperson.Text = ""
-
+        uscino.Text = ""
 
     End Sub
 

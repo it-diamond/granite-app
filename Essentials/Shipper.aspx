@@ -31,6 +31,11 @@
         display:none;
         
     }
+    .form-control {
+            border: 1px solid #e5e5e5;
+            padding: 4px;
+            border-color: black;
+        } 
     
     </style>
    <%-- <script type="text/javascript">
@@ -130,7 +135,8 @@
 							<a href="#"  style="color:#6d6d6d ;font-size:20px;"><b>Diamond CNF Granite</b> <span></span> </a>							
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span><label  id="lbluser"  /><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="../Lassets/images/favicon.png" class="img-circle" alt="icon"> <span>
+                           <asp:Label ID="asplbluser" runat="server"></asp:Label><label  id="dpt"  /></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">								
 								<li><a href="../login.aspx"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
@@ -191,12 +197,12 @@
 			<div class="main-content">
 				<div class="container-fluid">
                 <div class="lead"><b>Shipper Details</b></div>
-					<div class="panel panel-profile">
+					<div class="panel panel-profile" >
                     <br />
                         <div class="row">
                         <div class="col-md-2">Shipper Name</div><div class="col-md-4"><asp:TextBox ID="shipper" class="form-control" autocomplete="off" runat="server">
                         </asp:TextBox>
-                         </asp:TextBox><asp:HiddenField
+                       <asp:HiddenField
                                 ID="hdid" runat="server" /></div>
                         <div class="col-md-2">Address</div><div class="col-md-4"><asp:TextBox ID="addr1" class="form-control " autocomplete="off" runat="server"></asp:TextBox></div>
                         </div>
@@ -205,7 +211,51 @@
                         <div class="col-md-2">City</div><div class="col-md-4"><asp:TextBox ID="city" class="form-control " autocomplete="off"  runat="server"></asp:TextBox></div>
                         </div>
                         <div class="row">
-                        <div class="col-md-2">State</div><div class="col-md-4"><asp:TextBox ID="state" class="form-control " autocomplete="false"   runat="server"></asp:TextBox></div>
+                        <div class="col-md-2">State</div><div class="col-md-4">
+                        <asp:DropDownList ID="state1" runat="server" class="form-control input-sm " Font-Size="Medium">
+                        <asp:ListItem Value="">Select State</asp:ListItem>
+                        <asp:ListItem Value="Andhra Pradesh">Andhra Pradesh</asp:ListItem>
+                        <asp:ListItem Value="Arunachal Pradesh">Arunachal Pradesh</asp:ListItem>
+                        <asp:ListItem Value="Assam">Assam</asp:ListItem>
+                        <asp:ListItem Value="Bihar">Bihar</asp:ListItem>
+                        <asp:ListItem Value="Properietor">Andhra Pradesh</asp:ListItem>
+                        <asp:ListItem Value="Partnership">Arunachal Pradesh</asp:ListItem>
+                        <asp:ListItem Value="companyltd">Assam</asp:ListItem>
+                        
+                        <asp:ListItem Value="Chhattisgarh">Chhattisgarh</asp:ListItem>
+                        <asp:ListItem Value="Goa">Goa</asp:ListItem>
+                        <asp:ListItem Value="Gujarat">Gujarat</asp:ListItem>
+                        <asp:ListItem Value="Haryana">Haryana</asp:ListItem>
+
+                      
+                        <asp:ListItem Value="Himachal Pradesh">Himachal Pradesh</asp:ListItem>
+                        <asp:ListItem Value="Jharkhand">Jharkhand</asp:ListItem>
+                        <asp:ListItem Value="Karnataka">Karnataka</asp:ListItem>
+                        <asp:ListItem Value="Kerala">Kerala</asp:ListItem>
+
+                        <asp:ListItem Value="Madhya Pradesh">Madhya Pradesh</asp:ListItem>
+                        <asp:ListItem Value="Maharashtra">Maharashtra</asp:ListItem>
+                        <asp:ListItem Value="Manipur">Manipur</asp:ListItem>
+                        <asp:ListItem Value="Meghalaya">Meghalaya</asp:ListItem>
+
+                        <asp:ListItem Value="Mizoram">Mizoram</asp:ListItem>
+                        <asp:ListItem Value="Nagaland">Nagaland</asp:ListItem>
+                        <asp:ListItem Value="Odisha">Odisha</asp:ListItem>
+                        <asp:ListItem Value="Punjab">Punjab</asp:ListItem>
+
+                        <asp:ListItem Value="Rajasthan">Rajasthan</asp:ListItem>
+                        <asp:ListItem Value="Sikkim">Sikkim</asp:ListItem>
+                        <asp:ListItem Value="Tamil Nadu">Tamil Nadu</asp:ListItem>
+                        <asp:ListItem Value="Telangana">Telangana</asp:ListItem>
+
+                        <asp:ListItem Value="Tripura">Tripura</asp:ListItem>
+               
+                        <asp:ListItem Value="Uttar Pradesh">Uttar Pradesh</asp:ListItem>
+                        <asp:ListItem Value="Uttarakhand">Uttarakhand</asp:ListItem>
+                        <asp:ListItem Value="West Bengal">West Bengal</asp:ListItem>
+                        </asp:DropDownList> 
+                        </div>
+                       <%-- <asp:TextBox ID="state" class="form-control " autocomplete="false"   runat="server"></asp:TextBox></div>--%>
                         <div class="col-md-2">Pincode</div><div class="col-md-4"><asp:TextBox ID="pincode" class="form-control " autocomplete="off"  runat="server"></asp:TextBox></div>
                         </div>
                         <div class="row">
@@ -218,8 +268,10 @@
                         </div>
                         <div class="row">
                         <div class="col-md-2">IE Code</div><div class="col-md-4"><asp:TextBox ID="iecode" class="form-control " runat="server"></asp:TextBox></div>
-                        <div class="col-md-2"></div><div class="col-md-4"></div>
+                        <div class="col-md-2">GST No</div><div class="col-md-4"><asp:TextBox ID="gstno" class="form-control " runat="server"></asp:TextBox></div>
+                     
                         </div>
+                        
                         <div class="row">
                         <div class="col-md-6 text-right "><asp:Button ID="save" runat="server" Text="Submit" class="btn btn-success"/></div><div class="col-md-6"><asp:Button ID="Button1" runat="server" class="btn btn-danger" Text="Clear" /></div>                       
                         </div>    <br />                        
@@ -241,7 +293,7 @@
 <asp:Label ID="shipper1" Text='<%# Eval(" shipper_name") %>' runat="server"/>
 </ItemTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText=" Shipper Address 1" HeaderStyle-BackColor="#00bfff" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
+<%--<asp:TemplateField HeaderText=" Shipper Address 1" HeaderStyle-BackColor="#00bfff" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
 <ItemTemplate>
 <asp:Label ID="addr11" Text='<%# Eval("shipper_address") %>' runat="server" />
 </ItemTemplate>
@@ -291,6 +343,7 @@
 <asp:Label ID="iecode1" Text='<%# Eval("shipper_iecode") %>' runat="server"/>
 </ItemTemplate>
 </asp:TemplateField>
+--%>
 <asp:TemplateField HeaderText="Edit" HeaderStyle-BackColor="#00bfff" >
 <ItemTemplate>
        <asp:ImageButton ID="imgEdit" runat="server" CommandName="Edit"  ImageUrl="~/assets/img/edit.png"  ToolTip="Edit" commandargument='<%#Eval("auto_id")%>' CausesValidation="false"/>
