@@ -59,33 +59,6 @@ Partial Public Class ExportReport
     Protected WithEvents gvDetails As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Noofblocks1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Noofblocks1 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''cbm1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents cbm1 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''weight1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents weight1 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''export control.
     '''</summary>
     '''<remarks>

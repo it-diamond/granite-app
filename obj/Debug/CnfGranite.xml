@@ -382,30 +382,6 @@ gvDetails control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:CnfGranite.ExportReport.Noofblocks1">
-	<summary>
-Noofblocks1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.ExportReport.cbm1">
-	<summary>
-cbm1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.ExportReport.weight1">
-	<summary>
-weight1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:CnfGranite.ExportReport.export">
 	<summary>
 export control.
@@ -1361,38 +1337,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:CnfGranite.Reporttree.vesname1">
 	<summary>
 vesname1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.Reporttree.portname1">
-	<summary>
-portname1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.Reporttree.cranewt1">
-	<summary>
-cranewt1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.Reporttree.cranewt3">
-	<summary>
-cranewt3 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.Reporttree.cranewt2">
-	<summary>
-cranewt2 control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3071,9 +3015,9 @@ noofpcs control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:CnfGranite.PackingList.viewgrid">
+</member><member name="F:CnfGranite.PackingList.addvesseldetails">
 	<summary>
-viewgrid control.
+addvesseldetails control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3082,6 +3026,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:CnfGranite.PackingList.hatchnbr">
 	<summary>
 hatchnbr control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:CnfGranite.PackingList.viewgrid">
+	<summary>
+viewgrid control.
 </summary>
 	<remarks>
 Auto-generated field.

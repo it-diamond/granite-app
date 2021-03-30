@@ -13,13 +13,15 @@ Public Class CNFPartywise
     Dim obj As New ObjClass
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim vesselname, portname, CNFparty As String
+        Dim vesselname, portname As String
         vesselname = Request.QueryString("vesname")
         portname = Request.QueryString("portname")
-        CNFparty = Request.QueryString("partyname")
+        'CNFparty = Request.QueryString("partyname")
+        'select packing_cnfagent  from granite_packinglistheader where packing_vesselname ='MV. PACIFIC EXPRESS'
 
         Me.Label2.Text = vesselname
         Me.Label3.Text = portname
+        Dim cnfparty As String = obj.GetOneValueFromQuery("select packing_cnfagent  from granite_packinglistheader where packing_vesselname  ='" + vesselname + "'")
 
         '1. Get the party name as list ['Diamond','Hari','Sri Jeyam']
         '2. Pass the party name into the for loop
@@ -42,7 +44,7 @@ Public Class CNFPartywise
 
         gvDetails.FooterRow.Cells(4).HorizontalAlign = HorizontalAlign.Right
         gvDetails.FooterRow.Cells(5).HorizontalAlign = HorizontalAlign.Right
-        gvDetails.FooterRow.Cells(6).HorizontalAlign = HorizontalAlign.Right
+        'gvDetails.FooterRow.Cells(6).HorizontalAlign = HorizontalAlign.Right
     End Sub
 
     Sub exporttoexcel()

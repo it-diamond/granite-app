@@ -185,42 +185,6 @@ Partial Public Class Reporttree
     Protected WithEvents vesname1 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''portname1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents portname1 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''cranewt1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents cranewt1 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''cranewt3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents cranewt3 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''cranewt2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents cranewt2 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Report1 control.
     '''</summary>
     '''<remarks>

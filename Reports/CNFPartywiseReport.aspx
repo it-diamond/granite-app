@@ -48,11 +48,11 @@ AllowSorting="true"    CssClass="GridviewDiv"    Width="100%"  ShowFooter="true"
         <asp:Label ID="lblSerial" runat="server" Text='<%#Container.DataItemIndex+1 %>'></asp:Label>
     </ItemTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText="Party Name">
+<%--<asp:TemplateField HeaderText="Party Name">
 <ItemTemplate>
 <asp:Label ID="lblpartyna" Text='<%#Eval("packing_cnfagent") %>' runat="server"></asp:Label>
 </ItemTemplate>
-</asp:TemplateField>
+</asp:TemplateField>--%>
 <asp:TemplateField HeaderText="Shipper Name">
 <ItemTemplate>
 <asp:Label ID="lblshipna" Text='<%#Eval("packing_shippername") %>' runat="server"></asp:Label>

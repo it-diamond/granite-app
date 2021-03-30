@@ -161,13 +161,13 @@ Public Class Reporttree
     'End Sub
 
     Private Sub Report1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Report1.Click
-        Dim vesselname, portname, craneweight1, craneweight2, craneweight3 As String
+        Dim vesselname As String
         vesselname = Request.Form("vesname1")
-        portname = Request.Form("portname1")
-        craneweight1 = Request.Form("cranewt1")
-        craneweight2 = Request.Form("cranewt2")
-        craneweight3 = Request.Form("cranewt3")
-        Dim pageurl = "HeavyBlockListReport.aspx?vesname1=" + vesselname + "&portname1=" + portname + "&cranewt1=" + craneweight1 + "&cranewt2=" + craneweight2 + "&cranewt3=" + craneweight3
+        'portname = Request.Form("portname1")
+        'craneweight1 = Request.Form("cranewt1")
+        'craneweight2 = Request.Form("cranewt2")
+        'craneweight3 = Request.Form("cranewt3")
+        Dim pageurl = "HeavyBlockListReport.aspx?vesname1=" + vesselname
         Response.Write("<script> window.open( '" + pageurl + "','_blank' ); </script>")
     End Sub
 
@@ -194,10 +194,10 @@ Public Class Reporttree
 
     Private Sub Cancel1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Cancel1.Click
         vesname1.Text = ""
-        portname1.Text = ""
-        cranewt1.Text = ""
-        cranewt3.Text = ""
-        cranewt2.Text = ""
+        'portname1.Text = ""
+        'cranewt1.Text = ""
+        'cranewt3.Text = ""
+        'cranewt2.Text = ""
 
     End Sub
 

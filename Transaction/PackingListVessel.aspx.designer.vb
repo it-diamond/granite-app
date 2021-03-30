@@ -149,13 +149,13 @@ Partial Public Class PackingList
     Protected WithEvents noofpcs As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''viewgrid control.
+    '''addvesseldetails control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents viewgrid As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents addvesseldetails As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''hatchnbr control.
@@ -165,6 +165,15 @@ Partial Public Class PackingList
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents hatchnbr As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''viewgrid control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents viewgrid As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''pblocknumber control.

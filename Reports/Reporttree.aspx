@@ -469,7 +469,7 @@ color: #0097FF;
                   <br />
                   <br />
                  <div class="col-sm-2">Vessel Name</div> <div class="col-sm-4"><asp:TextBox ID="vesname1" runat="server" CssClass="clsautovessel" Width="200px" /></div>
-                  <div class="col-sm-2">Port Name</div> <div class="col-sm-4"><asp:TextBox ID="portname1" CssClass="clsautoport" runat="server" Width="200px"/></div>
+                  <%--<div class="col-sm-2">Port Name</div> <div class="col-sm-4"><asp:TextBox ID="portname1" CssClass="clsautoport" runat="server" Width="200px"/></div>
                   <br />
                   <br />
                   <div class="col-sm-2">Crane Weight1</div> <div class="col-sm-4"><asp:TextBox ID="cranewt1"  CssClass="clsautocnf" runat="server" Width="200px"/></div>
@@ -478,7 +478,7 @@ color: #0097FF;
                   <br />
                   <div class="col-sm-2">Crane Weight2</div> <div class="col-sm-4"><asp:TextBox ID="cranewt2"  CssClass="clsautocnf" runat="server" Width="200px"/></div>
                   <br />
-                    
+                    --%>
                   <br />
                    <br />
                  <div class="col-sm-3"><asp:Button ID="Report1" runat="server" Text="Report" class="btn btn-primary"/></div>

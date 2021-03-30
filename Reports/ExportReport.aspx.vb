@@ -17,7 +17,13 @@ Public Class ExportReport
         Dim vesselname, portname As String
         vesselname = Request.QueryString("vesselname")
         portname = Request.QueryString("portname")
-        Me.vesselname.Text = "<b> MANIFEST GOODS EXPORTED PER " + vesselname + " OF 4644 TONS,UNDER COMMAND OF CAPT.LEU CHANG FU SAILED FROM  TUTICORIN ON " + Today + "  " + portname + " </b> "
+        Dim getdatawtdtls As New List(Of String)
+        getdatawtdtls = obj.GetMoreValueFromQuery("select saildate,net_tonnage,captain_name from granite_vessel_master where vessel_name ='" + vesselname + "'", 3)
+        Dim c1, c2, c3 As String
+        c1 = getdatawtdtls(0)
+        c2 = getdatawtdtls(1)
+        c3 = getdatawtdtls(2)
+        Me.vesselname.Text = "<b> MANIFEST GOODS EXPORTED PER " + vesselname + " OF " + c2 + " TONS,UNDER COMMAND OF " + c3 + " SAILED FROM  TUTICORIN ON " + c1 + "  " + portname + " </b> "
         Dim dd As New DataTable
         dd = obj.getdatatable("select distinct b.sb_date,b.sb_no,b.packing_marks,count(a.blocknumber)as blocknumber," & _
 "b.packing_description,b.packing_shippername,b.packing_consigneename," & _

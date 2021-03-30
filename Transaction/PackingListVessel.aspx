@@ -475,15 +475,26 @@
                         </div>
                         <div class="row">
                         <div class="col-md-2">No Of PCS</div><div class="col-md-4"><asp:TextBox ID="noofpcs" class="form-control " runat="server"></asp:TextBox>
-                        <asp:Button ID="viewgrid" class="btn btn-primary center-block" runat="server" Text="View vessel Details"/></div>
-                        <div class="col-md-2">Hatch Nbr</div><div class="col-md-4"><asp:TextBox ID="hatchnbr" class="form-control " runat="server"></asp:TextBox></div>
+                        <br />
+
+                        <asp:Button ID="addvesseldetails" class="btn btn-primary center-block" runat="server" Text="Add vessel Details"/></div>
+                        
+                        <div class="col-md-2">Hatch Nbr</div><div class="col-md-4"><asp:TextBox ID="hatchnbr" class="form-control " runat="server"></asp:TextBox> 
+                        <br />
                         </div>
-                        <%--<div class="row">
+                       <div class="col-md-1">
+                       <asp:Button ID="viewgrid" class="btn btn-primary center-block" runat="server" Text="View vessel Details"/></div>
+                        
+                       </div>
+
+                       <%-- <div class="row">
                         <div class="col-md-3">Crane Weight Breakups</div><div class="col-md-1">
                         <asp:TextBox ID="cranew1" class="form-control" autocomplete="off" runat="server" Height="25" Width="45"></asp:TextBox></div>
                         <div class="col-md-1"><asp:TextBox ID="cranew2" class="form-control" autocomplete="off" runat="server" Height="25" Width="45"></asp:TextBox></div>
                         <div class="col-md-1"><asp:TextBox ID="cranew3" class="form-control" autocomplete="off" runat="server" Height="25" Width="45"></asp:TextBox></div>
                         </div>--%>
+
+            
                         <br /> 
                         <br /> 
                         <div class="row">
@@ -636,6 +647,7 @@
 			</div>
 			<!-- END MAIN CONTENT -->
 		</div>
+        </div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
         <footer>

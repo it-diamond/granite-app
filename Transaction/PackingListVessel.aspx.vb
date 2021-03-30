@@ -223,7 +223,8 @@ Public Class PackingList
                 script += url
                 script += "'; }"
                 ClientScript.RegisterStartupScript(Me.GetType(), "Redirect", script, True)
-                bindgridview(packing_vesselname, packing_portname)
+                'bindgridview(packing_vesselname, packing_portname)
+                bindgridview(packing_vesselname)
         End Select
 
     End Sub
@@ -270,12 +271,11 @@ Public Class PackingList
                 Me.save.Text = "Update"
             Case Is = "Remove"
                 Refno = Me.Refno.Text
-
                 obj.QueryExecution("delete from granite_packinglistheader where Refno='" + Refno + "'")
                 obj.QueryExecution("delete from granite_packinglistdetails  where Refno='" + Refno + "'")
 
         End Select
-        bindgridview(Me.vesno.Text, Me.pportname.Text)
+        bindgridview(Me.vesno.Text)
     End Sub
 
 
@@ -300,10 +300,11 @@ Public Class PackingList
 
 
     End Sub
-    Sub bindgridview(ByVal v As String, ByVal p As String)
+    Sub bindgridview(ByVal v As String)
+        'Sub bindgridview(ByVal v As String, ByVal p As String)
         listdsi.SelectCommand = "Select autoid, Refno,format( packing_date,'dd/MM/yyyy')as packing_date,packing_vesselname," & _
             "packing_listno, packing_shippername,packing_consigneename ,packing_marks,packing_cnfagent," & _
-            "packing_portname,packing_description from granite_packinglistheader where packing_vesselname='" + v + "' and packing_portname='" + p + "' and job_completion_flag='0'and packing_list_type='V'"
+            "packing_portname,packing_description from granite_packinglistheader where packing_vesselname='" + v + "' and job_completion_flag='0'and packing_list_type='V'"
         Viewdetails()
     End Sub
 
@@ -388,7 +389,8 @@ Public Class PackingList
     End Sub
 
     Private Sub viewgrid_Click(sender As Object, e As System.EventArgs) Handles viewgrid.Click
-        bindgridview(Me.vesno.Text, Me.pportname.Text)
+        'bindgridview(Me.vesno.Text, Me.pportname.Text)
+        bindgridview(Me.vesno.Text)
     End Sub
 
     Private Sub clear_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles clear.Click
@@ -405,5 +407,43 @@ Public Class PackingList
         weightMT.Text = ""
         packingstatus.Text = ""
 
+    End Sub
+
+    Private Sub addvesseldetails_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles addvesseldetails.Click
+        Dim Refno, packing_date, packing_vesselname, packing_listno, packing_shippername,
+         packing_consigneename, packing_marks, packing_cnfagent, packing_portname, packing_description, blocknumber, volumeofCBT, weightMT, status, message, sql, no_of_pcs, hatch_nbr As String
+        Dim querylist As New List(Of String)
+        message = ""
+        packing_date = obj.ConvDtFrmt(Me.date.Text, "yyyy-MM-dd")
+        Dim pack_vesselname = Me.vesno.Text
+        packing_vesselname = Me.vesno.Text
+        packing_listno = Me.packinglist.Text
+        packing_shippername = Me.shippername.Text
+        packing_consigneename = Me.conname.Text
+        packing_marks = Me.packingmarks.Text
+        packing_cnfagent = Me.packingcnfagent.Text
+        packing_portname = Me.pportname.Text
+        packing_description = Me.pdesc.Text
+        no_of_pcs = Me.noofpcs.Text
+        hatch_nbr = Me.hatchnbr.Text
+        Refno = getreferenceno()
+        'Refno = Me.Refno.Text
+        sql = "insert into granite_packinglistheader(Refno,packing_date,packing_vesselname ,packing_listno,packing_shippername," & _
+                    "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr)values('" + Refno + "','" + packing_date + "'," & _
+                    "'" + packing_vesselname + "','" + packing_listno + "','" + packing_shippername + "','" + packing_consigneename + "','" + packing_marks + "'," & _
+                    "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "')"
+        querylist.Add(sql)
+        For i = 0 To Gridview1.Rows.Count - 1
+            blocknumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
+            volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
+            weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
+            status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
+
+
+            querylist.Add("insert into granite_packinglistdetails(Refno,blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')"
+)
+        Next
+        'querylist.Add("update control_mast set granite_ref_no=granite_ref_no+1")
+        message = "Successfully added data"
     End Sub
 End Class
