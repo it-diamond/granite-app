@@ -1286,38 +1286,6 @@ vesname control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:CnfGranite.Reporttree.portname">
-	<summary>
-portname control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.Reporttree.cnfparty">
-	<summary>
-cnfparty control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.Reporttree.ListBox1">
-	<summary>
-ListBox1 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.Reporttree.button5">
-	<summary>
-button5 control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:CnfGranite.Reporttree.tim2report">
 	<summary>
 tim2report control.
@@ -1449,6 +1417,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:CnfGranite.CNFPartywise.Label3">
 	<summary>
 Label3 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:CnfGranite.CNFPartywise.cnfpartyreport">
+	<summary>
+cnfpartyreport control.
 </summary>
 	<remarks>
 Auto-generated field.
@@ -3015,14 +2991,6 @@ noofpcs control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
-</member><member name="F:CnfGranite.PackingList.addvesseldetails">
-	<summary>
-addvesseldetails control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
 </member><member name="F:CnfGranite.PackingList.hatchnbr">
 	<summary>
 hatchnbr control.
@@ -3074,6 +3042,14 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:CnfGranite.PackingList.add">
 	<summary>
 add control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:CnfGranite.PackingList.addvesseldetails">
+	<summary>
+addvesseldetails control.
 </summary>
 	<remarks>
 Auto-generated field.

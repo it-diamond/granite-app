@@ -122,42 +122,6 @@ Partial Public Class Reporttree
     Protected WithEvents vesname As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''portname control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents portname As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''cnfparty control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents cnfparty As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''ListBox1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ListBox1 As Global.System.Web.UI.WebControls.ListBox
-
-    '''<summary>
-    '''button5 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents button5 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''tim2report control.
     '''</summary>
     '''<remarks>

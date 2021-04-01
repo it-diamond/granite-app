@@ -6,6 +6,7 @@ Public Class PackingList
     Inherits System.Web.UI.Page
     Dim obj As New ObjClass
 
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         asplbluser.Text = Session("username")
     End Sub
@@ -167,27 +168,33 @@ Public Class PackingList
 
 
         Select Case Me.save.Text
-            Case Is = "Submit"
-                Refno = getreferenceno()
+            '    Case Is = "Submit"
+            '        Refno = getreferenceno()
+            '        Dim querycont As New List(Of String)
 
-                sql = "insert into granite_packinglistheader(Refno,packing_date,packing_vesselname ,packing_listno,packing_shippername," & _
-                            "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr)values('" + Refno + "','" + packing_date + "'," & _
-                            "'" + packing_vesselname + "','" + packing_listno + "','" + packing_shippername + "','" + packing_consigneename + "','" + packing_marks + "'," & _
-                            "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "')"
-                querylist.Add(sql)
-                For i = 0 To Gridview1.Rows.Count - 1
-                    blocknumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
-                    volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
-                    weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
-                    status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
+            '        sql = "insert into granite_packinglistheader(Refno,packing_date,packing_vesselname ,packing_listno,packing_shippername," & _
+            '                    "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr)values('" + Refno + "','" + packing_date + "'," & _
+            '                     "'" + packing_vesselname + "','" + packing_listno + "','" + packing_shippername + "','" + packing_consigneename + "','" + packing_marks + "'," & _
+            '                     "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "')"
+            '        For i = 0 To Gridview1.Rows.Count - 1
+            '            blocknumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
+            '            volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
+            '            weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
+            '            status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
 
 
-                    querylist.Add("insert into granite_packinglistdetails (Refno, blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')"
-        )
-                Next
-                querylist.Add("update control_mast set granite_ref_no=granite_ref_no+1")
-                message = "Successfully added data"
-
+            '            querylist.Add("insert into granite_packinglistdetails (Refno, blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')"
+            ')
+            '        Next
+            '        querylist.Add(sql)
+            '        ' ''querycont = Addblockdetails(Refno)
+            '        ' ''If (querycont.Count <> 0) Then
+            '        ' ''    For i = 0 To querycont.Count - 1
+            '        ' ''        querylist.Add(querycont(i))
+            '        ' ''    Next
+            '        ' ''End If
+            '        querylist.Add("update control_mast set granite_ref_no=granite_ref_no+1")
+            '        message = "Successfully added data"
             Case Is = "Update"
                 Refno = Me.Refno.Text
                 obj.QueryExecution("delete from granite_packinglistdetails where Refno='" + Refno + "'")
@@ -294,7 +301,7 @@ Public Class PackingList
             Volumeofcbm = Volumeofcbm + CDbl(Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text))
             weightMT = weightMT + CDbl(Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text))
         Next
-        totalblocknumber.Text = "Total number Blocknumber = " & Gridview1.Rows.Count
+        totalblocknumber.Text = "Total number of Blocknumber = " & Gridview1.Rows.Count
         totalvolumeofCBM.Text = "Total number of Volumeofcbm =  " & Volumeofcbm
         totalweightMT.Text = "Total number of weightMT =  " & weightMT
 
@@ -409,41 +416,76 @@ Public Class PackingList
 
     End Sub
 
+   
+
+    'Private Function Addblockdetails(ByVal refno As String) As List(Of String)
+
+    '    Dim result As New List(Of String)
+    '    'Dim querylist As New List(Of String)
+    '    Dim blocknumber, volumeofCBT, weightMT, status, sql As String
+    '    Dim pack_vesselname = Me.vesno.Text
+    '    For i = 0 To Gridview1.Rows.Count - 1
+    '        blocknumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
+    '        volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
+    '        weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
+    '        status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
+    '        sql = ("insert into granite_packinglistdetails(Refno,blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')")
+    '        result.Add(sql)
+    '    Next
+    '    Return result
+
+    'End Function
+    'Private Function addvesseldetails(ByVal refno As String) As List(Of String)
+
+    '    Dim result As New List(Of String)
+    '    'Dim querylist As New List(Of String)
+    '    Dim blocknumber, volumeofCBT, weightMT, status, sql As String
+    '    Dim pack_vesselname = Me.vesno.Text
+    '    For i = 0 To Gridview1.Rows.Count - 1
+    '        blocknumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
+    '        volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
+    '        weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
+    '        status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
+    '        sql = ("insert into granite_packinglistdetails(Refno,blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')")
+    '        result.Add(sql)
+    '    Next
+    '    Return result
+
+    'End Functionn                        
+
     Private Sub addvesseldetails_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles addvesseldetails.Click
-        Dim Refno, packing_date, packing_vesselname, packing_listno, packing_shippername,
-         packing_consigneename, packing_marks, packing_cnfagent, packing_portname, packing_description, blocknumber, volumeofCBT, weightMT, status, message, sql, no_of_pcs, hatch_nbr As String
-        Dim querylist As New List(Of String)
-        message = ""
-        packing_date = obj.ConvDtFrmt(Me.date.Text, "yyyy-MM-dd")
-        Dim pack_vesselname = Me.vesno.Text
-        packing_vesselname = Me.vesno.Text
-        packing_listno = Me.packinglist.Text
-        packing_shippername = Me.shippername.Text
-        packing_consigneename = Me.conname.Text
-        packing_marks = Me.packingmarks.Text
-        packing_cnfagent = Me.packingcnfagent.Text
-        packing_portname = Me.pportname.Text
-        packing_description = Me.pdesc.Text
-        no_of_pcs = Me.noofpcs.Text
-        hatch_nbr = Me.hatchnbr.Text
-        Refno = getreferenceno()
+                Dim Refno, packing_date, packing_vesselname, packing_listno, packing_shippername,
+                packing_consigneename, packing_marks, packing_cnfagent, packing_portname, packing_description, blocknumber, volumeofCBT, weightMT, status, message, sql, no_of_pcs, hatch_nbr As String
+                Dim querylist As New List(Of String)
+                message = ""
+                packing_date = obj.ConvDtFrmt(Me.date.Text, "yyyy-MM-dd")
+                Dim pack_vesselname = Me.vesno.Text
+                packing_vesselname = Me.vesno.Text
+                packing_listno = Me.packinglist.Text
+                packing_shippername = Me.shippername.Text
+                packing_consigneename = Me.conname.Text
+                packing_marks = Me.packingmarks.Text
+                packing_cnfagent = Me.packingcnfagent.Text
+                packing_portname = Me.pportname.Text
+                packing_description = Me.pdesc.Text
+                no_of_pcs = Me.noofpcs.Text
+                hatch_nbr = Me.hatchnbr.Text
+                Refno = getreferenceno()
         'Refno = Me.Refno.Text
-        sql = "insert into granite_packinglistheader(Refno,packing_date,packing_vesselname ,packing_listno,packing_shippername," & _
-                    "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr)values('" + Refno + "','" + packing_date + "'," & _
-                    "'" + packing_vesselname + "','" + packing_listno + "','" + packing_shippername + "','" + packing_consigneename + "','" + packing_marks + "'," & _
-                    "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "')"
-        querylist.Add(sql)
+                sql = "insert into granite_packinglistheader(Refno,packing_date,packing_vesselname ,packing_listno,packing_shippername," & _
+                            "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr)values('" + Refno + "','" + packing_date + "'," & _
+                            "'" + packing_vesselname + "','" + packing_listno + "','" + packing_shippername + "','" + packing_consigneename + "','" + packing_marks + "'," & _
+                            "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "')"
+                querylist.Add(sql)
         For i = 0 To Gridview1.Rows.Count - 1
             blocknumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
             volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
             weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
             status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
-
-
-            querylist.Add("insert into granite_packinglistdetails(Refno,blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')"
-)
+            querylist.Add("insert into granite_packinglistdetails(Refno,blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')")
         Next
-        'querylist.Add("update control_mast set granite_ref_no=granite_ref_no+1")
         message = "Successfully added data"
-    End Sub
+        'querylist.Add("update control_mast set granite_ref_no=granite_ref_no+1")
+            End Sub
+
 End Class

@@ -32,10 +32,10 @@
     </td>
     </tr>
      <tr>
-   <%-- <td style ="width :30%">
+   <td style ="width :30%">
     CNF PARTY NAME:
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-    </td>--%>
+        <asp:Label ID="cnfpartyreport" runat="server" Text="Label"></asp:Label>
+    </td>
     </tr>
 
     </table>
@@ -75,11 +75,10 @@ AllowSorting="true"    CssClass="GridviewDiv"    Width="100%"  ShowFooter="true"
 <ItemTemplate>
 <asp:Label ID="lblcbm" Text='<%# Eval("VolumeofCBT").ToString %>' runat="server"/>
 </ItemTemplate>
-<FooterTemplate>
-     <asp:Label ID="lblTotal2" runat="server"></asp:Label>
+<FooterTemplate>     <asp:Label ID="lblTotal2" runat="server"></asp:Label>
      </FooterTemplate>
 </asp:TemplateField>
-<asp:TemplateField HeaderText="Weight" ItemStyle-HorizontalAlign="Right">
+<asp:TemplateField HeaderText="Weight" ItemStyle-HorizontalAlign="Right" >
 <ItemTemplate>
 <asp:Label ID="lblweight" Text='<%# Eval("WeightMT").ToString %>' runat="server"/>
 </ItemTemplate>

@@ -149,15 +149,6 @@ Partial Public Class PackingList
     Protected WithEvents noofpcs As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''addvesseldetails control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents addvesseldetails As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''hatchnbr control.
     '''</summary>
     '''<remarks>
@@ -219,6 +210,15 @@ Partial Public Class PackingList
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents add As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''addvesseldetails control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents addvesseldetails As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Gridview1 control.

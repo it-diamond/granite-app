@@ -95,33 +95,27 @@ Public Class Reporttree
     End Sub
 
     Private Sub tim2report_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles tim2report.Click
-        Dim vesselname, portname, pageurl, partyname As String
-        'Dim label1 As String
-        'Dim fn2 As New CNFPartywise
-        'fn2.Visible = True
-        'Dim count As Integer = ListBox1.Items.Count - 1
-        'ReDim fn2.listitems(count)
-        'For i As Integer = 0 To count
-        '    fn2.listitems(i) = ListBox1.Items(i).ToString
+        ' Dim vesselname, portname, pageurl, partyname As String
+        Dim vesselname, pageurl As String
+
+        'Dim listdata As New List(Of String)
+        'Dim data As Integer = CInt(ListBox1.Items.Count - 1)
+        ''CInt(ListBox1.Items.Count - 1)
+        ''For i As Integer = 0 To ListBox1.SelectedItems.Count - 1
+        'For i As Integer = 0 To data
+        '    ListBox1.SelectedIndex = i
+        '    listdata.Add(ListBox1.Text)
+
         'Next
-        Dim listdata As New List(Of String)
-        Dim data As Integer = CInt(ListBox1.Items.Count - 1)
-        'CInt(ListBox1.Items.Count - 1)
-        'For i As Integer = 0 To ListBox1.SelectedItems.Count - 1
-        For i As Integer = 0 To data
-            ListBox1.SelectedIndex = i
-            listdata.Add(ListBox1.Text)
-
-        Next
-        For i As Integer = 0 To listdata.Count - 1
-            partyname = listdata(i)
-            vesselname = Request.Form("vesname")
-            portname = Request.Form("portname")
-            partyname = Request.Form("ListBox1")
-            pageurl = "CNFPartywiseReport.aspx?vesname=" + vesselname + "&portname=" + portname + "&partyname=" + listdata(i)
-
-            Response.Write("<script> window.open( '" + pageurl + "','_blank' ); </script>")
-        Next
+        'For i As Integer = 0 To listdata.Count - 1
+        'partyname = listdata(i)
+        vesselname = Request.Form("vesname")
+        'portname = Request.Form("portname")
+        'partyname = Request.Form("ListBox1")
+        'pageurl = "CNFPartywiseReport.aspx?vesname=" + vesselname + "&portname=" + portname + "&partyname=" + listdata(i)
+        pageurl = "CNFPartywiseReport.aspx?vesname=" + vesselname
+        Response.Write("<script> window.open( '" + pageurl + "','_blank' ); </script>")
+        'Next
 
     End Sub
 
@@ -171,12 +165,12 @@ Public Class Reporttree
         Response.Write("<script> window.open( '" + pageurl + "','_blank' ); </script>")
     End Sub
 
-    Private Sub button5_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button5.Click
-        ListBox1.Items.Add(cnfparty.Text.Trim())
-        cnfparty.Text = ""
-        cnfparty.Focus()
+    'Private Sub button5_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles button5.Click
+    '    'ListBox1.Items.Add(cnfparty.Text.Trim())
+    '    'cnfparty.Text = ""
+    '    'cnfparty.Focus()
 
-    End Sub
+    'End Sub
 
     Private Sub cancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cancel.Click
         vname.Text = ""
@@ -187,9 +181,9 @@ Public Class Reporttree
         vesname.Text = ""
         'portname.Text = ""
         'ListBox1.Items.RemoveAt(ListBox1.SelectedIndex())
-        ListBox1.Items.Clear()
+        'ListBox1.Items.Clear()
 
-        cnfparty.Text = ""
+        'cnfparty.Text = ""
     End Sub
 
     Private Sub Cancel1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Cancel1.Click

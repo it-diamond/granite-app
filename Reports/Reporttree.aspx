@@ -436,7 +436,7 @@ color: #0097FF;
                   <br />
                  <div class="col-sm-2">Vessel Name</div> 
                   <div class="col-sm-4"><asp:TextBox ID="vesname" runat="server" CssClass="clsautovessel" Width="200px" /></div>
-                  <div class="col-sm-2">Port Name</div> 
+                 <%-- <div class="col-sm-2">Port Name</div> 
                   <div class="col-sm-4"><asp:TextBox ID="portname" CssClass="clsautoport" runat="server" Width="200px"/></div>
                   <br />
                   <br />
@@ -446,8 +446,8 @@ color: #0097FF;
                   <asp:TextBox ID="cnfparty"  CssClass="clsautocnf" runat="server" Width="200px"/>
                   <div class="col-sm-3"><asp:ListBox ID="ListBox1" runat="server" Height="150" Width="125" SelectionMode="Multiple" AutoPostBack="False"></asp:ListBox> 
                   </div>
-                  </div>
-                  <div class="col-sm-3"> <asp:Button ID="button5" runat="server" Text="add" class="btn btn-primary"/></div>
+                  </div>--%>
+                  <%--<div class="col-sm-3"> <asp:Button ID="button5" runat="server" Text="add" class="btn btn-primary"/></div>--%>
                   
                  </div>
              <br />
