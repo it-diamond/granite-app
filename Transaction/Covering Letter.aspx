@@ -213,7 +213,7 @@ color: #0097FF;
 				<nav>
 					<ul class="nav">
 						<li class="hidden"><a href="../DashBoard/DashBoard.aspx"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-						<li ><a href="#subPages" data-toggle="collapse" ><i class="fas fa-database"></i> <span>Essentials</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+						<li ><a href="#subPages" data-toggle="collapse"><i class="fas fa-database"></i> <span>Essentials</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse in">
 								<ul class="nav">
                                     <li><a  href="../Essentials/Vessel.aspx">Vessel</a></li>
@@ -307,7 +307,7 @@ color: #0097FF;
             <div class="col-sm-3 left">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" >
         <Columns>
-        <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />
+        <%--<asp:BoundField DataField="RowNumber" HeaderText="Row Number" />--%>
         <asp:TemplateField HeaderText="ShippingBillNo" ItemStyle-Width="30">
             <ItemTemplate>
                 <asp:TextBox ID="txtsb_no" runat="server" Text='<%# Eval("sb_no") %>'/>

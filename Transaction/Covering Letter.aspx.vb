@@ -12,8 +12,6 @@ Public Class Covering_Letter
         '    Me.SetInitialRow()
         'End If
     End Sub
-
-
     <WebMethod()>
     Public Shared Function Getvessel(ByVal prefix As String) As String()
         Dim Liner As New List(Of String)()

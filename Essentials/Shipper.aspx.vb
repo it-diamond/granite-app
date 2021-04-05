@@ -9,10 +9,7 @@ Public Class Shipper
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         asplbluser.Text = Session("username")
-        If Not Page.IsPostBack Then
-            state1.Items.Add("Tamilnadu")
-            state1.Items.Add("Kerala")
-        End If
+        
     End Sub
 
     Protected Sub save_Click(sender As Object, e As EventArgs) Handles save.Click
