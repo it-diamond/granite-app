@@ -2895,6 +2895,22 @@ asplbluser control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:CnfGranite.PackingList.TextBox1">
+	<summary>
+TextBox1 control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:CnfGranite.PackingList.jobno">
+	<summary>
+jobno control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:CnfGranite.PackingList.Refno">
 	<summary>
 Refno control.
@@ -3023,6 +3039,14 @@ volumeofcbm control.
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
+</member><member name="F:CnfGranite.PackingList.blockhidden">
+	<summary>
+blockhidden control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
 </member><member name="F:CnfGranite.PackingList.weightMT">
 	<summary>
 weightMT control.
@@ -3042,14 +3066,6 @@ To modify move field declaration from designer file to code-behind file.
 </member><member name="F:CnfGranite.PackingList.add">
 	<summary>
 add control.
-</summary>
-	<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member><member name="F:CnfGranite.PackingList.addvesseldetails">
-	<summary>
-addvesseldetails control.
 </summary>
 	<remarks>
 Auto-generated field.

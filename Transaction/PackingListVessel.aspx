@@ -448,8 +448,15 @@
                 <div class="lead"><b>Packing List Vessel Details</b></div>
 					<div class="panel panel-profile">
                     <br />
+                     <div class="row">
+                    <div class="col-md-2">Ref No: </div>
+                    <div class="col-md-4"><asp:TextBox ID="TextBox1" class="form-control " autocomplete="off"  runat="server"></asp:TextBox>
+                    <div class="col-md-4"><asp:Button ID="jobno" class="btn btn-primary center-block" runat="server" Text="GetJobNO" />
+                    </div>
+                    </div>
                         <div class="row">
-                        <div class="col-md-2">Ref No: </div><div class="col-md-4"><asp:TextBox ID="Refno" class="form-control " autocomplete="off" ReadOnly="true" runat="server"></asp:TextBox>
+                        
+                        <div class="col-md-2">Job No: </div><div class="col-md-4"><asp:TextBox ID="Refno" class="form-control " autocomplete="off" ReadOnly="true" runat="server"></asp:TextBox>
                         <asp:HiddenField
                                 ID="hdid" runat="server" /></div>
                         <div class="col-md-2">Date</div>  
@@ -492,6 +499,8 @@
                         <div class="row">
                         <div class="col-md-2">Block Number</div><div class="col-md-4"><asp:TextBox ID="pblocknumber" class="form-control " runat="server"></asp:TextBox></div>
                         <div class="col-md-2">Volume of CBM</div><div class="col-md-4"><asp:TextBox ID="volumeofcbm" class="form-control " runat="server"></asp:TextBox></div>
+                        <asp:HiddenField
+                                ID="blockhidden" runat="server" />
                         </div>
                         <div class="row">
                         <div class="col-md-2">Weight M.T</div><div class="col-md-4"><asp:TextBox ID="weightMT" class="form-control " runat="server"></asp:TextBox></div>
@@ -503,10 +512,10 @@
                         </div>
                         <br />   
                         <br /> 
-                        <div class="row">            
+                       <%-- <div class="row">            
                       <%-- <div class="col-md-6 text-right "><asp:Button ID="Button1" runat="server" Text="Add" class="btn btn-primary center-block" /></div>--%>
-                        <div class="col-md-6 text-right "><asp:Button ID="addvesseldetails" runat="server" class="btn btn-primary center-block" Text="Add Vessel Details" /></div> 
-                        </div> 
+                       <%-- <div class="col-md-6 text-right "><asp:Button ID="addvesseldetails" runat="server" class="btn btn-primary center-block" Text="Add Vessel Details" /></div> 
+                        </div>--%>
                         <div class="row">
 
         <asp:Gridview ID="Gridview1" runat="server" AutoGenerateColumns="false" Width="100%" class="table-bordered ">
@@ -527,11 +536,8 @@
             </ItemTemplate>
               </asp:TemplateField>
         </Columns>
-
-</asp:Gridview>     
-
+</asp:Gridview>    
    </div> 
-                
                         <div class="row">            
                         <div class="col-md-6 text-right "><asp:Button ID="save" runat="server" Text="Submit" class="btn btn-success" /></div>
                         <div class="col-md-6"><asp:Button ID="clear" runat="server" class="btn btn-danger" Text="Clear" /></div> 
@@ -544,29 +550,7 @@
                                    
                                  </div>             
 						<div class="clearfix"></div>
-					<%--</div>--%>
-                    <%--<div class="row">--%>
-                  
-    <%--<div class="col-md-2">Block Number</div><div class="col-md-4"><asp:TextBox ID="pblocknumber" class="form-control " runat="server"></asp:TextBox></div>
-                        <div class="col-md-2">Volume of CBM</div><div class="col-md-4"><asp:TextBox ID="volumeofcbm" class="form-control " runat="server"></asp:TextBox></div>
-  <div class="col-md-2">Weight M.T</div><div class="col-md-4"><asp:TextBox ID="weightMT" class="form-control " runat="server"></asp:TextBox></div>
-                        <div class="col-md-2">Status</div><div class="col-md-4"><asp:TextBox ID="packingstatus" class="form-control " runat="server"></asp:TextBox></div>--%>
-                        <%--<div class="row">
-                        <div class="col-md-6 text-right "><asp:Button ID="Button2" runat="server" Text="Submit" class="btn btn-success"  OnClientClick="return validation()" /></div>
-                        <div class="col-md-6"><asp:Button ID="Button3" runat="server" class="btn btn-danger" Text="Clear" /></div>                       
-                        </div>--%>
-   <%--</div>--%>
-   
-   <br />
-   <%--<div class="row text-right">
-
-           <%--<div class="col-sm-12"><asp:Button ID="add"  OnClientClick="return validation12()" class="btn btn-primary" runat="server" Text="Add" /></div>--%>
-           <%--<div class="col-sm-12"><asp:Button ID="add" class="btn btn-primary" runat="server" Text="Add" /></div>
-   </div>
-      <br />--%>
-   
                     <div class="panel panel-profile">
-
                   <asp:GridView ID="gvvessel" runat="server" AutoGenerateColumns ="False" 
                             DataSourceID="listdsi" EmptyDataText="No Data Found">
        <HeaderStyle BackColor="#df5015" />

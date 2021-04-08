@@ -1,6 +1,9 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Configuration
 Imports System.Web.Services
+Imports System.Web.UI.WebControls
+Imports System.Data
+
 
 Public Class Covering_Letter
     Inherits System.Web.UI.Page
@@ -10,7 +13,11 @@ Public Class Covering_Letter
 
         'If Not IsPostBack Then
         '    Me.SetInitialRow()
+
         'End If
+        If Not IsPostBack Then
+            BindGridview()
+        End If
     End Sub
     <WebMethod()>
     Public Shared Function Getvessel(ByVal prefix As String) As String()
@@ -195,7 +202,22 @@ Public Class Covering_Letter
                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "alertMessage", "alert('Something went wrong')", True)
         End Select
     End Sub
-
+    Protected Sub BindGridview()
+        Dim dt As New DataTable()
+        dt.Columns.Add("RowNumber", GetType(Integer))
+        dt.Columns.Add("ShippingBillNo", GetType(String))
+        dt.Columns.Add("Marks", GetType(String))
+        dt.Columns.Add("Date", GetType(String))
+        Dim dr As DataRow = dt.NewRow()
+        dr("RowNumber") = 1
+        dr("ShippingBillNo") = String.Empty
+        dr("Marks") = String.Empty
+        dr("Date") = String.Empty
+        dt.Rows.Add(dr)
+        ViewState("Curtbl") = dt
+        GridView1.DataSource = dt
+        GridView1.DataBind()
+    End Sub
     'Private Sub Button1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Button1.Click
     '    Dim Refno, covering_no As String
     '    Dim msg As String
@@ -256,11 +278,14 @@ Public Class Covering_Letter
             End Using
         End Using
     End Sub
+    Protected Sub btnAdd_Click(ByVal sender As Object, ByVal e As EventArgs)
+        AddNewRow()
+    End Sub
 
     Private Sub GridView1_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridView1.RowCommand
         Dim Refno, message, sql As String
         Dim successid As Integer
-        Dim QueryList As New List(Of String)
+
         Dim sno1 = Me.snotxt.Text
         'Dim sno1 = Val(Me.snotxt.Text) + 1
         Dim entrydate As String = obj.ConvDtFrmt(Now, "yyyy-MM-dd")
@@ -274,17 +299,20 @@ Public Class Covering_Letter
 
             'Reference the GridView Row.
             Dim row As GridViewRow = GridView1.Rows(rowIndex)
+            Dim Rownumber As Integer
             'Fetch value of Name.
             Dim sib_no As String = TryCast(row.FindControl("txtsb_no"), TextBox).Text
             Dim marks As String = TryCast(row.FindControl("txtpacking_marks"), TextBox).Text
             Dim sb_date As String = TryCast(row.FindControl("txtsb_date"), TextBox).Text
+            'Dim Rownumber As String = TryCast(row.FindControl("Rownumber"), TextBox).Text
+
             'Fetch value of Country.
             'Dim sib_no1 As String = row.Cells(0).Text
             'Dim marks1 As String = row.Cells(1).Text
 
 
-            sql = "insert into granitecoveringletter_shippingdetails(sno1,entrydate,vessel_name,shipper_name,Refno,sib_no,marks,covering_no,sb_date)" & _
-             " values('" + sno1 + "','" + entrydate + "','" + vessel_name + "','" + shipper_name + "','" + Refno + "','" + sib_no + "','" + marks + "','" + covering_no + "','" + sb_date + "')"
+            sql = "insert into granitecoveringletter_shippingdetails(sno1,entrydate,vessel_name,shipper_name,Refno,sib_no,marks,covering_no,sb_date,Rownumber)" & _
+             " values('" + sno1 + "','" + entrydate + "','" + vessel_name + "','" + shipper_name + "','" + Refno + "','" + sib_no + "','" + marks + "','" + covering_no + "','" + sb_date + "','" + Rownumber + "')"
             successid = obj.QueryExecution(sql)
 
             If (successid) Then
@@ -298,70 +326,54 @@ Public Class Covering_Letter
         End If
     End Sub
 
-    'Private Sub SetInitialRow()
-    '    Dim dt As New DataTable()
-    '    Dim dr As DataRow = Nothing
-    '    dt.Columns.Add(New DataColumn("RowNumber", GetType(String)))
-    '    dt.Columns.Add(New DataColumn("Column1", GetType(String)))
-    '    dt.Columns.Add(New DataColumn("Column2", GetType(String)))
-    '    dt.Columns.Add(New DataColumn("Column3", GetType(String)))
-    '    dt.Columns.Add(New DataColumn("Column4", GetType(String)))
+   
+    Private Sub SetOldData()
 
-    '    dr = dt.NewRow()
-    '    dr("RowNumber") = 1
-    '    dr("Column1") = String.Empty
-    '    dr("Column2") = String.Empty
-    '    dr("Column3") = String.Empty
-    '    dr("Column4") = String.Empty
 
-    '    dt.Rows.Add(dr)
-    '    ViewState("CurrentTable" & 0) = dt
-    '    ViewState("CurrentTable" & 1) = dt
-    '    ViewState("CurrentTable" & 2) = dt
-    '    ViewState("CurrentTable" & 3) = dt
-    '    ViewState("CurrentTable" & 4) = dt
-    '    'BindGridview()
-    '    GridView1.DataSource = dt
-    '    GridView1.DataBind()
-    'End Sub
-    'Private Sub AddNewRowToGrid(ByVal viewId As Integer, ByVal gv As GridView)
-    '    Dim rowIndex As Integer = 0
-    '    If ViewState("CurrentTable" & viewId) IsNot Nothing Then
-    '        Dim dtCurrentTable As DataTable = DirectCast(ViewState("CurrentTable" & viewId), DataTable)
-    '        Dim drCurrentRow As DataRow = Nothing
-    '        If dtCurrentTable.Rows.Count > 0 Then
-    '            For i As Integer = 1 To dtCurrentTable.Rows.Count
-    '                Dim box1 As New TextBox()
-    '                Dim box2 As New Button()
-    '                If viewId = 0 Then
-    '                    box1 = DirectCast(gv.Rows(rowIndex).Cells(0).FindControl("txtsb_no"), TextBox)
-    '                    box1 = DirectCast(gv.Rows(rowIndex).Cells(1).FindControl("txtpacking_marks"), TextBox)
-    '                    box1 = DirectCast(gv.Rows(rowIndex).Cells(2).FindControl("txtsb_date"), TextBox)
-    '                    box2 = DirectCast(gv.Rows(rowIndex).Cells(4).FindControl("Button3"), Button)
-    '                End If
-    '                'If viewId = 1 Then
-    '                '    box1 = DirectCast(gv.Rows(rowIndex).Cells(1).FindControl("txtspouseincome1"), TextBox)
-    '                'End If
+        Dim rowIndex As Integer = 0
+        If ViewState("Curtbl") IsNot Nothing Then
+            Dim dt As DataTable = DirectCast(ViewState("Curtbl"), DataTable)
+            If dt.Rows.Count > 0 Then
+                For i As Integer = 0 To dt.Rows.Count - 1
+                    Dim txtsb_no As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
+                    Dim txtpacking_marks As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(2).FindControl("txtPrice"), TextBox)
+                    Dim txtsb_date As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(2).FindControl("txtsb_date"), TextBox)
+                    ' txtsb_date()
+                    txtsb_no.Text = dt.Rows(i)("ShippingBillNo").ToString()
+                    txtpacking_marks.Text = dt.Rows(i)("Marks").ToString()
+                    txtsb_date.Text = dt.Rows(i)("Date").ToString()
+                    rowIndex += 1
+                Next
+            End If
+        End If
+    End Sub
 
-    '                drCurrentRow = dtCurrentTable.NewRow()
-    '                drCurrentRow("RowNumber") = i + 1
-    '                dtCurrentTable.Rows(i - 1)("Column1") = box1.Text
-    '                dtCurrentTable.Rows(i - 1)("Column2") = box1.Text
-    '                dtCurrentTable.Rows(i - 1)("Column3") = box1.Text
-    '                dtCurrentTable.Rows(i - 1)("Column4") = box2.Text
-    '                rowIndex += 1
-    '            Next
+    Private Sub AddNewRow()
+        Dim rowIndex As Integer = 0
+        If ViewState("Curtbl") IsNot Nothing Then
+            Dim dtCurrentTable As DataTable = DirectCast(ViewState("Curtbl"), DataTable)
+            Dim drCurrentRow As DataRow = Nothing
+            If dtCurrentTable.Rows.Count > 0 Then
+                For i As Integer = 1 To dtCurrentTable.Rows.Count
+                    Dim txtsb_no As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(1).FindControl("txtsb_no"), TextBox)
+                    Dim txtpacking_marks As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(2).FindControl("txtpacking_marks"), TextBox)
+                    Dim txtsb_date As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(2).FindControl("txtsb_date"), TextBox)
+                    drCurrentRow = dtCurrentTable.NewRow()
+                    drCurrentRow("RowNumber") = i + 1
+                    dtCurrentTable.Rows(i - 1)("ShippingBillNo") = txtsb_no.Text
+                    dtCurrentTable.Rows(i - 1)("Marks") = txtpacking_marks.Text
+                    dtCurrentTable.Rows(i - 1)("Date") = txtsb_date.Text
+                    rowIndex += 1
+                Next
+                dtCurrentTable.Rows.Add(drCurrentRow)
+                ViewState("Curtbl") = dtCurrentTable
+                GridView1.DataSource = dtCurrentTable
+                GridView1.DataBind()
+            End If
+        Else
+            Response.Write("ViewState Value is Null")
+        End If
+        SetOldData()
+    End Sub
 
-    '            dtCurrentTable.Rows.Add(drCurrentRow)
-    '            ViewState("CurrentTable" & viewId) = dtCurrentTable
-    '            gv.DataSource = dtCurrentTable
-    '            gv.DataBind()
-    '        End If
-    '    Else
-
-    '        Response.Write("ViewState is null")
-    '    End If
-
-    '    SetPreviousData(viewId, gv)
-    'End Sub
 End Class

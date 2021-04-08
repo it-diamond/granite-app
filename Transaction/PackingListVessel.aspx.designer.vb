@@ -41,6 +41,24 @@ Partial Public Class PackingList
     Protected WithEvents asplbluser As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
+    '''TextBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''jobno control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents jobno As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Refno control.
     '''</summary>
     '''<remarks>
@@ -185,6 +203,15 @@ Partial Public Class PackingList
     Protected WithEvents volumeofcbm As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''blockhidden control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents blockhidden As Global.System.Web.UI.WebControls.HiddenField
+
+    '''<summary>
     '''weightMT control.
     '''</summary>
     '''<remarks>
@@ -210,15 +237,6 @@ Partial Public Class PackingList
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents add As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''addvesseldetails control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents addvesseldetails As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Gridview1 control.

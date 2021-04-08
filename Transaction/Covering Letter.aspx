@@ -305,31 +305,31 @@ color: #0097FF;
             </div>
             <div class="row">
             <div class="col-sm-3 left">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" >
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"  ShowFooter="true" AllowPaging="true" PageSize="10"  ShowHeaderWhenEmpty="true" >
         <Columns>
-        <%--<asp:BoundField DataField="RowNumber" HeaderText="Row Number" />--%>
+       <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />
         <asp:TemplateField HeaderText="ShippingBillNo" ItemStyle-Width="30">
             <ItemTemplate>
-                <asp:TextBox ID="txtsb_no" runat="server" Text='<%# Eval("sb_no") %>'/>
+                <asp:TextBox ID="txtsb_no" runat="server" />
             </ItemTemplate>
         </asp:TemplateField>
         <asp:TemplateField HeaderText="Marks" ItemStyle-Width="150">
             <ItemTemplate>
-                <asp:TextBox ID="txtpacking_marks" runat="server" Text='<%# Eval("packing_marks") %>'/>
+                <asp:TextBox ID="txtpacking_marks" runat="server"/>
             </ItemTemplate>
         </asp:TemplateField>
-        <asp:TemplateField HeaderText="date" ItemStyle-Width="150">
+        <asp:TemplateField HeaderText="Date" ItemStyle-Width="150">
             <ItemTemplate>
-                <asp:TextBox ID="txtsb_date" runat="server" Text='<%# Eval("sb_date") %>'/>
+                <asp:TextBox ID="txtsb_date" runat="server"/>
             </ItemTemplate>
         </asp:TemplateField>
         <asp:TemplateField>
             <ItemTemplate>
                 <asp:Button ID="Button3" Text="Insert" runat="server" CommandName="Insert"  CommandArgument="<%# Container.DataItemIndex %>" />
             </ItemTemplate>
-            <FooterStyle HorizontalAlign="Right" />
-            <FooterTemplate>
-             <asp:Button ID="ButtonAdd" runat="server" Text="Add New Row" />
+           <%-- <FooterStyle HorizontalAlign="Right" />--%>
+           <FooterTemplate>
+            <asp:Button ID="buttonadd" Text="Add New Row" runat="server"   OnClick="btnAdd_Click" />
             </FooterTemplate>
         </asp:TemplateField>
       </Columns>
