@@ -307,7 +307,7 @@ color: #0097FF;
             <div class="col-sm-3 left">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"  ShowFooter="true" AllowPaging="true" PageSize="10"  ShowHeaderWhenEmpty="true" >
         <Columns>
-       <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />
+      <%-- <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />--%>
         <asp:TemplateField HeaderText="ShippingBillNo" ItemStyle-Width="30">
             <ItemTemplate>
                 <asp:TextBox ID="txtsb_no" runat="server" />

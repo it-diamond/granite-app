@@ -176,6 +176,15 @@ Partial Public Class PackingList
     Protected WithEvents hatchnbr As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''number control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents number As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''viewgrid control.
     '''</summary>
     '''<remarks>

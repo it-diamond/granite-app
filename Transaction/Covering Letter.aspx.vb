@@ -204,12 +204,12 @@ Public Class Covering_Letter
     End Sub
     Protected Sub BindGridview()
         Dim dt As New DataTable()
-        dt.Columns.Add("RowNumber", GetType(Integer))
+        'dt.Columns.Add("RowNumber", GetType(Integer))
         dt.Columns.Add("ShippingBillNo", GetType(String))
         dt.Columns.Add("Marks", GetType(String))
         dt.Columns.Add("Date", GetType(String))
         Dim dr As DataRow = dt.NewRow()
-        dr("RowNumber") = 1
+        'dr("RowNumber") = 1
         dr("ShippingBillNo") = String.Empty
         dr("Marks") = String.Empty
         dr("Date") = String.Empty
@@ -299,7 +299,7 @@ Public Class Covering_Letter
 
             'Reference the GridView Row.
             Dim row As GridViewRow = GridView1.Rows(rowIndex)
-            Dim Rownumber As Integer
+            'Dim Rownumber As Integer
             'Fetch value of Name.
             Dim sib_no As String = TryCast(row.FindControl("txtsb_no"), TextBox).Text
             Dim marks As String = TryCast(row.FindControl("txtpacking_marks"), TextBox).Text
@@ -311,8 +311,8 @@ Public Class Covering_Letter
             'Dim marks1 As String = row.Cells(1).Text
 
 
-            sql = "insert into granitecoveringletter_shippingdetails(sno1,entrydate,vessel_name,shipper_name,Refno,sib_no,marks,covering_no,sb_date,Rownumber)" & _
-             " values('" + sno1 + "','" + entrydate + "','" + vessel_name + "','" + shipper_name + "','" + Refno + "','" + sib_no + "','" + marks + "','" + covering_no + "','" + sb_date + "','" + Rownumber + "')"
+            sql = "insert into granitecoveringletter_shippingdetails(sno1,entrydate,vessel_name,shipper_name,Refno,sib_no,marks,covering_no,sb_date)" & _
+             " values('" + sno1 + "','" + entrydate + "','" + vessel_name + "','" + shipper_name + "','" + Refno + "','" + sib_no + "','" + marks + "','" + covering_no + "','" + sb_date + "')"
             successid = obj.QueryExecution(sql)
 
             If (successid) Then
@@ -335,8 +335,8 @@ Public Class Covering_Letter
             Dim dt As DataTable = DirectCast(ViewState("Curtbl"), DataTable)
             If dt.Rows.Count > 0 Then
                 For i As Integer = 0 To dt.Rows.Count - 1
-                    Dim txtsb_no As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
-                    Dim txtpacking_marks As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(2).FindControl("txtPrice"), TextBox)
+                    Dim txtsb_no As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(1).FindControl("txtsb_no"), TextBox)
+                    Dim txtpacking_marks As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(2).FindControl("txtpacking_marks"), TextBox)
                     Dim txtsb_date As TextBox = DirectCast(GridView1.Rows(rowIndex).Cells(2).FindControl("txtsb_date"), TextBox)
                     ' txtsb_date()
                     txtsb_no.Text = dt.Rows(i)("ShippingBillNo").ToString()

@@ -485,6 +485,9 @@
                         <div class="col-md-2">Hatch Nbr</div><div class="col-md-4"><asp:TextBox ID="hatchnbr" class="form-control " runat="server"></asp:TextBox></div>
                         <br />
                         <br />
+                         <div class="row">
+                          <div class="col-md-2">Autonumber</div><div class="col-md-4"><asp:TextBox ID="number" class="form-control " runat="server"></asp:TextBox></div>
+                         </div>
                        <asp:Button ID="viewgrid" class="btn btn-primary center-block" runat="server" Text="View vessel Details" /></div>
                         
                       
@@ -506,7 +509,9 @@
                         <div class="col-md-2">Weight M.T</div><div class="col-md-4"><asp:TextBox ID="weightMT" class="form-control " runat="server"></asp:TextBox></div>
                         <div class="col-md-2">Status</div><div class="col-md-4"><asp:TextBox ID="packingstatus" class="form-control " Text="A" runat="server"></asp:TextBox></div>
                         </div>
-     
+                         <%--<div class="row">
+                          <div class="col-md-2">Autonumber</div><div class="col-md-4"><asp:TextBox ID="autonumber" class="form-control " runat="server"></asp:TextBox></div>
+                         </div>--%>
                         <div class="row">
                         <div class="col-md-12"><asp:Button ID="add" class="btn btn-primary center-block" runat="server" Text="Add" /></div>
                         </div>
@@ -525,6 +530,7 @@
         <asp:BoundField DataField="Volumeofcbm" HeaderText="Volume of CBM" ItemStyle-Width="150" />
         <asp:BoundField DataField="weightMT" HeaderText="Weight MT" ItemStyle-Width="150" />
          <asp:BoundField DataField="status" HeaderText="Status" ItemStyle-Width="150" />
+          <%--<asp:BoundField DataField="autonumber" HeaderText="Autonumber" ItemStyle-Width="150" />--%>
                <asp:TemplateField headertext="Edit" HeaderStyle-Width ="5">
              <ItemTemplate >              
               <asp:ImageButton ID="Editcargo" runat="server" CommandName="change" ImageUrl="~/assets/img/edit.png" CommandArgument="<%# Container.DataItemIndex%>"  ToolTip="Edit"  CausesValidation="false" />

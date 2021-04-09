@@ -112,9 +112,9 @@ Public Class PackingList
     End Function
     Protected Sub save_Click(sender As Object, e As EventArgs) Handles save.Click
         Dim Refno, packing_date, packing_vesselname, packing_listno, packing_shippername, packingid,
-        packing_consigneename, packing_marks, packing_cnfagent, packing_portname, packing_description, blocknumber, volumeofCBT, weightMT, status, message, sql, no_of_pcs, hatch_nbr As String
+        packing_consigneename, packing_marks, packing_cnfagent, packing_portname, packing_description, blocknumber, volumeofCBT, weightMT, status, message, sql, no_of_pcs, hatch_nbr, autonumber As String
         packing_date = obj.ConvDtFrmt(Me.date.Text, "yyyy-MM-dd")
-        Dim autonumber As Integer = 0
+        'Dim autonumber As Integer = 1
         Dim pack_vesselname = Me.vesno.Text
         packing_vesselname = Me.vesno.Text
         packing_listno = Me.packinglist.Text
@@ -126,6 +126,7 @@ Public Class PackingList
         packing_description = Me.pdesc.Text
         no_of_pcs = Me.noofpcs.Text
         hatch_nbr = Me.hatchnbr.Text
+        autonumber = Val(Me.number.Text)
         'crane_wt_bup1 = Me.cranew1.Text
         'crane_wt_bup2 = Me.cranew2.Text
         'crane_wt_bup3 = Me.cranew3.Text
@@ -170,43 +171,41 @@ Public Class PackingList
 
         Select Case Me.save.Text
             Case Is = "Submit"
-
                 'Refno = getreferenceno()
                 Dim querycont As New List(Of String)
                 If (TextBox1.Text = "") Then
                     Refno = getreferenceno()
                     'Me.blockhidden.Value = autonumber
+                    'autonumber = Me.blockhidden.Value
                     sql = "insert into granite_packinglistheader(Refno,packing_date,packing_vesselname ,packing_listno,packing_shippername," & _
-                                "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr)values('" + Refno + "','" + packing_date + "'," & _
+                                "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr,autonumber)values('" + Refno + "','" + packing_date + "'," & _
                                  "'" + packing_vesselname + "','" + packing_listno + "','" + packing_shippername + "','" + packing_consigneename + "','" + packing_marks + "'," & _
-                                 "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "')"
+                                 "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "','" + autonumber + "')"
                     For i = 0 To Gridview1.Rows.Count - 1
                         blocknumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
                         volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
                         weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
                         status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
 
+                        querylist.Add("insert into granite_packinglistdetails(Refno,blocknumber,volumeofCBT,weightMT,status,pack_vesselname,autonumber)values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "','" + autonumber + "')")
 
-                        querylist.Add("insert into granite_packinglistdetails (Refno, blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')"
-                )
-                        'autonumber = autonumber + 1
                     Next
+                    autonumber = autonumber + 1
                     querylist.Add(sql)
                 Else
                     Refno = TextBox1.Text
-
                     'TextBox1.Text = Refno
                     sql = "insert into granite_packinglistheader(Refno,packing_date,packing_vesselname ,packing_listno,packing_shippername," & _
-                                "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr)values('" + Refno + "','" + packing_date + "'," & _
+                                "packing_consigneename, packing_marks, packing_cnfagent , packing_portname, packing_description,job_completion_flag,packing_list_type,no_of_pcs,hatch_nbr,autonumber)values('" + Refno + "','" + packing_date + "'," & _
                                  "'" + packing_vesselname + "','" + packing_listno + "','" + packing_shippername + "','" + packing_consigneename + "','" + packing_marks + "'," & _
-                                 "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "')"
+                                 "'" + packing_cnfagent + "','" + packing_portname + "','" + packing_description + "','0','V','" + no_of_pcs + "','" + hatch_nbr + "','" + autonumber + "')"
                     For i = 0 To Gridview1.Rows.Count - 1
                         blocknumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text)
                         volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
                         weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
                         status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
-
-                        querylist.Add("insert into granite_packinglistdetails(Refno, blocknumber,volumeofCBT,weightMT,status,pack_vesselname) values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')")
+                        autonumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(4).Text)
+                        querylist.Add("insert into granite_packinglistdetails(Refno,blocknumber,volumeofCBT,weightMT,status,pack_vesselname,autonumber) values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "','" + autonumber + "')")
                     Next
                     querylist.Add(sql)
                 End If
@@ -218,7 +217,7 @@ Public Class PackingList
                 packingid = Me.hdid.Value
                 sql = "update granite_packinglistheader set packing_date='" + packing_date + "',packing_vesselname='" + packing_vesselname + "' ,packing_listno='" + packing_listno +
                     "',packing_shippername ='" + packing_shippername + "', packing_consigneename ='" + packing_consigneename + "' ,packing_marks='" + packing_marks + "',packing_cnfagent ='" + packing_cnfagent +
-                    "' ,packing_portname='" + packing_portname + "' , packing_description='" + packing_description + "' where autoid = " & packingid
+                    "',packing_portname='" + packing_portname + "' , packing_description='" + packing_description + "' where autoid = " & packingid
 
                 querylist.Add(sql)
                 For i = 0 To Gridview1.Rows.Count - 1
@@ -226,7 +225,8 @@ Public Class PackingList
                     volumeofCBT = Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text)
                     weightMT = Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text)
                     status = Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
-                    querylist.Add("insert into granite_packinglistdetails(Refno, blocknumber,volumeofCBT,weightMT,status,pack_vesselname)values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "')")
+                    autonumber = Server.HtmlDecode(Gridview1.Rows(i).Cells(4).Text)
+                    querylist.Add("insert into granite_packinglistdetails(Refno, blocknumber,volumeofCBT,weightMT,status,pack_vesselname,autonumber)values('" + Refno + "','" + blocknumber + "','" + volumeofCBT + "','" + weightMT + "','" + status + "','" + pack_vesselname + "','" + autonumber + "')")
                 Next
                 Me.save.Text = "Submit"
                 message = "Successfully Update data"
@@ -262,9 +262,9 @@ Public Class PackingList
                 Dim strcon As String = ConfigurationManager.ConnectionStrings("MydbConn").ConnectionString
                 Dim sql As String
 
-                sql = "Select Refno,packing_date,packing_vesselname,packing_listno, packing_shippername,packing_consigneename ,packing_marks,packing_cnfagent,packing_portname,packing_description from granite_packinglistheader where autoid='" + packingid + "'"
+                sql = "Select Refno,packing_date,packing_vesselname,packing_listno, packing_shippername,packing_consigneename ,packing_marks,packing_cnfagent,packing_portname,packing_description,autonumber from granite_packinglistheader where autoid='" + packingid + "'"
                 Dim getdata As New List(Of String)
-                getdata = obj.GetMoreValueFromQuery(sql, 10)
+                getdata = obj.GetMoreValueFromQuery(sql, 11)
 
                 Me.refno.Text = getdata.Item(0)
                 Me.date.Text = IIf(getdata.Item(1) = "01/01/1900", "", getdata.Item(1))
@@ -276,7 +276,7 @@ Public Class PackingList
                 Me.packingcnfagent.Text = getdata.Item(7)
                 Me.pportname.Text = getdata.Item(8)
                 Me.pdesc.Text = getdata.Item(9)
-               
+                Me.number.Text = getdata.Item(10)
                 Me.hdid.Value = packingid
 
                 'If (Me.date.Text = getdata.Item(1)) Then
@@ -285,7 +285,8 @@ Public Class PackingList
                 '    }
                 'End If
                 Dim table, DD As New DataTable
-                DD = obj.getdatatable("select blocknumber,volumeofCBT AS volumeofcbm,weightMT,status from granite_packinglistdetails WHERE Refno='" + getdata.Item(0) + "'")
+                DD = obj.getdatatable("select blocknumber,volumeofCBT AS volumeofcbm,weightMT,status from granite_packinglistdetails WHERE autonumber='" + getdata.Item(10) + "'")
+                'DD = obj.getdatatable("select blocknumber,volumeofCBT AS volumeofcbm,weightMT,status from granite_packinglistdetails WHERE autonumber='" + autonumber + "'")
                 Gridview1.DataSource = DD
                 Gridview1.DataBind()
                 Me.save.Text = "Update"
@@ -350,7 +351,7 @@ Public Class PackingList
         Me.volumeofcbm.Text = ""
         Me.weightMT.Text = ""
         Me.packingstatus.Text = ""
-      
+        'Me.autonumber.Text = ""
         Gridview1.DataSource = table
         Gridview1.DataBind()
         Viewdetails()
@@ -367,19 +368,13 @@ Public Class PackingList
 
         Select Case e.CommandName
             Case Is = "change"
-
-
-
                 Me.pblocknumber.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(0).Text)
                 Me.volumeofcbm.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(1).Text)
                 Me.weightMT.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(2).Text)
                 Me.packingstatus.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(3).Text)
-
-
+                'Me.autonumber.Text = Server.HtmlDecode(Gridview1.Rows(rowIndex).Cells(4).Text)
                 'Case Is = "remove"
-
         End Select
-
         Dim table As New DataTable
         ' Create four typed columns in the DataTable.
         table.Columns.AddRange(New DataColumn() {New DataColumn("Blocknumber", GetType(String)), _
@@ -387,13 +382,13 @@ Public Class PackingList
                                          New DataColumn("weightMT", GetType(String)), _
                                          New DataColumn("status", GetType(String))})
 
-
         ' Add five rows with those columns filled in the DataTable.
         For i = 0 To Gridview1.Rows.Count - 1
             table.Rows.Add(Server.HtmlDecode(Gridview1.Rows(i).Cells(0).Text),
                            Server.HtmlDecode(Gridview1.Rows(i).Cells(1).Text),
-                          Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text),
-                           Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text))
+                           Server.HtmlDecode(Gridview1.Rows(i).Cells(2).Text),
+                           Server.HtmlDecode(Gridview1.Rows(i).Cells(3).Text)
+)
 
         Next
 

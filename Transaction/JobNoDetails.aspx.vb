@@ -436,8 +436,6 @@ Public Class PackingListContainer
                 Exit Sub
         End Select
 
-
-
     End Sub
 
 
